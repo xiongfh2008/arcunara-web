@@ -38,6 +38,7 @@ export default {
       }
 
       const body = await request.text();
+	  const clientIp = request.headers.get("CF-Connecting-IP") || "";
 
       if (body.length > 65536) {
         return new Response(
@@ -58,7 +59,8 @@ export default {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Accept": "application/json"
+              "Accept": "application/json",
+			   "X-Arcunara-Client-IP": clientIp
             },
             body
           }
