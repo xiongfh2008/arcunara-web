@@ -9,32 +9,6 @@ export default {
       return Response.redirect(url.toString(), 308);
     }
 
-    // 临时诊断接口：检查 Worker 实际收到的访问者 IP
-    // 不调用后端，不调用 DeepSeek。
-    if (url.pathname === "/debug/client-ip") {
-      return new Response(
-        JSON.stringify(
-          {
-            clientIp:
-              request.headers.get("CF-Connecting-IP") || null,
-            country:
-              request.cf?.country || null,
-            colo:
-              request.cf?.colo || null
-          },
-          null,
-          2
-        ),
-        {
-          status: 200,
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            "Cache-Control": "no-store"
-          }
-        }
-      );
-    }
-
     if (url.pathname === "/api/tarot/reading") {
       if (request.method !== "POST") {
         return new Response(
@@ -49,20 +23,17 @@ export default {
         );
       }
 
-      const contentType =
-        request.headers.get("Content-Type") || "";
+      const contentType = request.headers.get("Content-Type") || "";
 
       if (!contentType.includes("application/json")) {
         return new Response(
           JSON.stringify({
-            detail:
-              "Content-Type must be application/json"
+            detail: "Content-Type must be application/json"
           }),
           {
             status: 415,
             headers: {
-              "Content-Type":
-                "application/json; charset=utf-8"
+              "Content-Type": "application/json; charset=utf-8"
             }
           }
         );
@@ -81,8 +52,7 @@ export default {
           {
             status: 413,
             headers: {
-              "Content-Type":
-                "application/json; charset=utf-8"
+              "Content-Type": "application/json; charset=utf-8"
             }
           }
         );
@@ -114,14 +84,12 @@ export default {
       } catch (error) {
         return new Response(
           JSON.stringify({
-            detail:
-              "AI service temporarily unavailable"
+            detail: "AI service temporarily unavailable"
           }),
           {
             status: 502,
             headers: {
-              "Content-Type":
-                "application/json; charset=utf-8",
+              "Content-Type": "application/json; charset=utf-8",
               "Cache-Control": "no-store"
             }
           }
@@ -137,8 +105,7 @@ export default {
         {
           status: 404,
           headers: {
-            "Content-Type":
-              "application/json; charset=utf-8"
+            "Content-Type": "application/json; charset=utf-8"
           }
         }
       );
