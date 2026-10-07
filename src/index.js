@@ -39,6 +39,23 @@ export default {
         );
       }
 
+      const originToken = env.ARCUNARA_ORIGIN_TOKEN;
+
+      if (!originToken) {
+        return new Response(
+          JSON.stringify({
+            detail: "Origin authentication is not configured"
+          }),
+          {
+            status: 503,
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              "Cache-Control": "no-store"
+            }
+          }
+        );
+      }
+
       const body = await request.text();
 
       const clientIp =
@@ -66,7 +83,8 @@ export default {
             headers: {
               "Content-Type": "application/json",
               "Accept": "application/json",
-              "X-Arcunara-Client-IP": clientIp
+              "X-Arcunara-Client-IP": clientIp,
+              "X-Arcunara-Origin-Token": originToken
             },
             body
           }
