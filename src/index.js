@@ -4,6 +4,11 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (url.hostname === "www.arcunara.com") {
+      url.hostname = "arcunara.com";
+      return Response.redirect(url.toString(), 308);
+    }
+
     if (url.pathname === "/api/tarot/reading") {
       if (request.method !== "POST") {
         return new Response(
