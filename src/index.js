@@ -1,0 +1,101 @@
+﻿const API_ORIGIN = "https://api.arcunara.com";
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (url.pathname === "/api/tarot/reading") {
+      if (request.method !== "POST") {
+        return new Response(
+          JSON.stringify({ detail: "Method not allowed" }),
+          {
+            status: 405,
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              "Allow": "POST"
+            }
+          }
+        );
+      }
+
+      const contentType = request.headers.get("Content-Type") || "";
+
+      if (!contentType.includes("application/json")) {
+        return new Response(
+          JSON.stringify({ detail: "Content-Type must be application/json" }),
+          {
+            status: 415,
+            headers: {
+              "Content-Type": "application/json; charset=utf-8"
+            }
+          }
+        );
+      }
+
+      const body = await request.text();
+
+      if (body.length > 65536) {
+        return new Response(
+          JSON.stringify({ detail: "Request body too large" }),
+          {
+            status: 413,
+            headers: {
+              "Content-Type": "application/json; charset=utf-8"
+            }
+          }
+        );
+      }
+
+      try {
+        const upstream = await fetch(
+          `${API_ORIGIN}/api/tarot/reading`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body
+          }
+        );
+
+        return new Response(upstream.body, {
+          status: upstream.status,
+          headers: {
+            "Content-Type":
+              upstream.headers.get("Content-Type") ||
+              "application/json; charset=utf-8",
+            "Cache-Control": "no-store"
+          }
+        });
+      } catch (error) {
+        return new Response(
+          JSON.stringify({
+            detail: "AI service temporarily unavailable"
+          }),
+          {
+            status: 502,
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              "Cache-Control": "no-store"
+            }
+          }
+        );
+      }
+    }
+
+    if (url.pathname.startsWith("/api/")) {
+      return new Response(
+        JSON.stringify({ detail: "API route not found" }),
+        {
+          status: 404,
+          headers: {
+            "Content-Type": "application/json; charset=utf-8"
+          }
+        }
+      );
+    }
+
+    return env.ASSETS.fetch(request);
+  }
+};
