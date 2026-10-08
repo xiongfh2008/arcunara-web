@@ -2,31 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
-<title>arcunara · Interactive Tarot Reading</title>
-<meta name="description" content="arcunara — an immersive 78-card tarot reading experience with Single Card, Three Card, Celtic Cross, Daily Tarot, and a searchable tarot library.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xingyuan · Interactive Tarot Reading</title>
+<meta name="description" content="Xingyuan Tarot — an immersive 78-card tarot reading experience with Single Card, Three Card, Celtic Cross, Daily Tarot, and a searchable tarot library.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#07040f">
 <meta property="og:type" content="website">
-<meta property="og:title" content="arcunara · Interactive Tarot Reading">
+<meta property="og:title" content="Xingyuan Tarot · Interactive Tarot Reading">
 <meta property="og:description" content="A focused 78-card tarot experience with Single Card, Three Card, Celtic Cross, Daily Tarot, and a searchable tarot library.">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="arcunara · Interactive Tarot Reading">
+<meta name="twitter:title" content="Xingyuan Tarot · Interactive Tarot Reading">
 <meta name="twitter:description" content="A tarot ritual for reflection, clarity, and choice.">
 <link rel="alternate" hreflang="en" href="?lang=en">
 <link rel="alternate" hreflang="zh-CN" href="?lang=zh-CN">
-<link rel="alternate" hreflang="ja" href="?lang=ja">
-<link rel="alternate" hreflang="ko" href="?lang=ko">
-<link rel="alternate" hreflang="es" href="?lang=es">
-<link rel="alternate" hreflang="fr" href="?lang=fr">
-<link rel="alternate" hreflang="de" href="?lang=de">
-<link rel="alternate" hreflang="pt" href="?lang=pt">
-<link rel="alternate" hreflang="ru" href="?lang=ru">
 <link rel="alternate" hreflang="x-default" href="?lang=en">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"arcunara","applicationCategory":"LifestyleApplication","inLanguage":["en","zh-CN","ja","ko","es","fr","de","pt","ru"],"description":"Interactive 78-card tarot readings for reflection, clarity, and intentional choice."}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Xingyuan Tarot","applicationCategory":"LifestyleApplication","inLanguage":["en","zh-CN"],"description":"Interactive 78-card tarot readings for reflection, clarity, and intentional choice."}
 </script>
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 4 L58 42 L96 50 L58 58 L50 96 L42 58 L4 50 L42 42 Z' fill='%23c9a45c'/%3E%3C/svg%3E">
@@ -34,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
 <style>
-/* ============ arcunara · design system ============ */
+/* ============ 星垣 · 设计系统 ============ */
 :root{
   --void:#07040f;
   --deep:#0e0821;
@@ -88,8 +81,8 @@ body[data-stage="reading"]{overflow:hidden}
 @keyframes drift{to{transform:translate3d(320px,180px,0)}}
 
 /* ============ 视频层 ============ */
-#vwrap{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none}
-#vwrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease;pointer-events:none;-webkit-user-select:none;user-select:none}
+#vwrap{position:fixed;inset:0;z-index:1;overflow:hidden}
+#vwrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
 #vwrap video.on{opacity:1}
 #vwrap video.dip{opacity:.55;transition:opacity .5s ease}
 #bgHome{position:fixed;inset:0;z-index:1;pointer-events:none;
@@ -224,22 +217,12 @@ body:not([data-stage="home"]) #rightcol.fade-piece{transform:translateX(30px)}
 #quote .qm{font-family:var(--f-roman);font-size:34px;line-height:.8;color:var(--gold);opacity:.9}
 #quote p{font-size:14.5px;letter-spacing:2.5px;line-height:2;color:var(--ink);opacity:.92}
 
-/* ============ Language switch (dropdown) ============ */
-#langSwitch{position:relative;flex:none}
-#langBtn{display:flex;align-items:center;gap:7px;border:1px solid rgba(201,164,92,.34);border-radius:18px;background:rgba(12,7,26,.62);backdrop-filter:blur(8px);color:var(--ink-dim);font-family:var(--f-roman);font-size:11px;letter-spacing:1.2px;padding:6px 12px;cursor:pointer;transition:.25s;white-space:nowrap}
-#langBtn:hover{color:var(--gold-hi);border-color:rgba(201,164,92,.6)}
-#langBtn .gl{color:var(--gold);font-size:10px}
-#langBtn .caret{font-size:8px;opacity:.7;transition:transform .25s}
-#langSwitch.open #langBtn{color:var(--gold-hi);border-color:rgba(201,164,92,.6)}
-#langSwitch.open #langBtn .caret{transform:rotate(180deg)}
-#langPanel{position:absolute;top:calc(100% + 8px);right:0;min-width:172px;padding:6px;display:none;flex-direction:column;gap:2px;border:1px solid rgba(201,164,92,.34);border-radius:14px;background:rgba(12,7,26,.94);backdrop-filter:blur(14px);box-shadow:0 14px 40px rgba(0,0,0,.5);z-index:95}
-#langSwitch.open #langPanel{display:flex}
-#langPanel button{border:0;background:transparent;color:var(--ink-dim);font-family:var(--f-roman);font-size:11.5px;letter-spacing:1px;padding:8px 12px;border-radius:9px;cursor:pointer;text-align:left;transition:.2s;display:flex;justify-content:space-between;align-items:center;gap:14px;white-space:nowrap}
-#langPanel button:hover{color:var(--gold-hi);background:rgba(201,164,92,.08)}
-#langPanel button.on{color:var(--gold-hi);background:rgba(201,164,92,.14)}
-#langPanel button .tick{opacity:0;font-size:9px}
-#langPanel button.on .tick{opacity:1}
-@media(max-width:760px){#langBtn{padding:5px 10px;font-size:10px;gap:5px}#langPanel{min-width:158px}}
+/* ============ Language switch ============ */
+#langSwitch{display:flex;align-items:center;gap:4px;padding:4px;border:1px solid rgba(201,164,92,.34);border-radius:18px;background:rgba(12,7,26,.62);backdrop-filter:blur(8px);flex:none}
+#langSwitch button{border:0;background:transparent;color:var(--ink-dim);font-family:var(--f-roman);font-size:10px;letter-spacing:1.2px;padding:5px 8px;border-radius:13px;cursor:pointer;transition:.25s}
+#langSwitch button.on{background:rgba(201,164,92,.18);color:var(--gold-hi);box-shadow:inset 0 0 0 1px rgba(201,164,92,.28)}
+#langSwitch button:hover{color:var(--gold-hi)}
+@media(max-width:760px){#langSwitch button{padding:4px 6px;font-size:9px}#langSwitch{gap:2px}}
 
 </style>
 <style>
@@ -627,442 +610,95 @@ details.ib .ib-h{display:contents}
   #arcTools{flex-direction:column}
   #arcOrientation{width:100%}
 }
+</style>
 
 
-/* ===== English layout stabilization =====
-   English labels are longer than their Chinese counterparts. These rules
-   reduce decorative letter-spacing, allow safe wrapping, and switch the
-   navigation to the mobile menu earlier to prevent collisions. */
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) body{
-  font-family:Georgia,"Times New Roman",serif;
-}
-html[lang="ja"] body{
-  font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho","Noto Serif JP","Noto Serif SC",serif;
-}
-html[lang="ko"] body{
-  font-family:"Nanum Myeongjo","Batang","Apple SD Gothic Neo","Noto Serif KR","Noto Serif SC",serif;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #topnav{
-  padding-left:18px;
-  padding-right:18px;
-  gap:10px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .navside{
-  gap:4px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .navlink{
-  font-family:var(--f-roman);
-  font-size:12.5px;
-  letter-spacing:.75px;
-  line-height:1.25;
-  padding:8px 5px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #navTitle{
-  font-family:var(--f-roman);
-  font-size:21px;
-  letter-spacing:1.7px;
-  gap:8px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #navTitle .st{
-  font-size:11px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #heroTitle{
-  font-family:var(--f-roman);
-  font-size:clamp(34px,3.7vw,56px);
-  letter-spacing:1.4px;
-  line-height:1.16;
-  overflow-wrap:normal;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #heroSub{
-  font-size:15px;
-  letter-spacing:.8px;
-  line-height:1.55;
-  text-align:center;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .howto h4,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .sp-card .n,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .selene,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .mtitle,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #dailyInfo .dn,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #adInfo h4,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .ib-name,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #aiPanel h3,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #synBless{
-  font-family:var(--f-roman);
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .howto h4{
-  font-size:14px;
-  letter-spacing:1.3px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .howto li{
-  font-size:13px;
-  letter-spacing:.25px;
-  line-height:1.55;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .daily .dt1{
-  font-family:var(--f-roman);
-  font-size:12.5px;
-  letter-spacing:.7px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .daily .dt2{
-  font-size:11.5px;
-  letter-spacing:.2px;
-  line-height:1.35;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .sp-card .n{
-  font-size:12px;
-  letter-spacing:.45px;
-  line-height:1.35;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .sp-card .d{
-  font-size:11px;
-  letter-spacing:.15px;
-  line-height:1.4;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #quote p{
-  font-size:14px;
-  letter-spacing:.4px;
-  line-height:1.7;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .selene{
-  letter-spacing:.55px;
-  line-height:1.65;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .dir-chip{
-  padding:10px 20px;
-  font-size:13px;
-  letter-spacing:.45px;
-  line-height:1.35;
-  white-space:normal;
-  text-align:center;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #introSteps{
-  gap:18px;
-  font-size:12px;
-  letter-spacing:.25px;
-  line-height:1.45;
-  text-align:center;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #introMeta{
-  max-width:min(820px,92vw);
-  font-size:12px;
-  letter-spacing:.25px;
-  line-height:1.55;
-  text-align:center;
-  overflow-wrap:break-word;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #questionLabel,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #questionHint{
-  letter-spacing:.35px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #drawCount{
-  letter-spacing:1.2px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .slot{
-  width:64px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .slot .s-fr{
-  width:58px;
-  margin:0 auto;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .slot .s-lb{
-  min-height:2.6em;
-  margin-top:6px;
-  font-size:9.5px;
-  letter-spacing:.1px;
-  line-height:1.25;
-  white-space:normal;
-  overflow-wrap:anywhere;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .tcWrap{
-  min-width:0;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .tcWrap .poslb{
-  width:min(138px,28vw);
-  font-size:10.5px;
-  letter-spacing:.3px;
-  line-height:1.3;
-  text-align:center;
-  white-space:normal;
-  overflow-wrap:break-word;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #rdHead h2{
-  font-family:var(--f-roman);
-  font-size:clamp(24px,3vw,36px);
-  letter-spacing:1.7px;
-  line-height:1.35;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #rdMeta{
-  row-gap:7px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #rdMeta span{
-  font-size:11px;
-  letter-spacing:.25px;
-  line-height:1.35;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .ib-name{
-  font-size:16px;
-  letter-spacing:.4px;
-  line-height:1.4;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .ib-name i,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .ib-pos,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .ib-ori,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .ib-kw,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .ib-cor,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .ib-act{
-  letter-spacing:.35px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .ib p,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #synBody p,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #synAdvice p,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #aiBody,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .about-p,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #dailyInfo .dm,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #adInfo .sec p{
-  letter-spacing:.15px;
-  line-height:1.8;
-  overflow-wrap:break-word;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #synth h3,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #aiPanel h3,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .mtitle{
-  letter-spacing:1.4px;
-  line-height:1.35;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #synAdvice .insight b,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #synBody .overall-label,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #aiStatus,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #journalTitle{
-  letter-spacing:.7px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .act{
-  font-size:13px;
-  letter-spacing:.55px;
-  line-height:1.35;
-  text-align:center;
-  white-space:normal;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .arcTab{
-  font-size:12px;
-  letter-spacing:.4px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #arcOrientation,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #arcSearch{
-  letter-spacing:.15px;
-}
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #dailyInfo .dd,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #dailyInfo .dk,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #dailyYi span,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #adInfo .kws,
-html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #adInfo .sec .t{
-  letter-spacing:.35px;
-}
+<style id="layoutAudioPatch">
+/* ===== English typography/layout repair ===== */
+html[lang="en"] .navlink{font-family:var(--f-roman);font-size:13px;letter-spacing:1.15px;padding-inline:6px}
+html[lang="en"] #navTitle{font-family:var(--f-roman);font-size:23px;letter-spacing:1.2px;gap:8px}
+html[lang="en"] #heroTitle{font-family:var(--f-roman);font-size:clamp(34px,3.65vw,56px);letter-spacing:1.1px;line-height:1.16;text-wrap:balance}
+html[lang="en"] #heroSub{font-size:14px;letter-spacing:1.15px;line-height:1.55;text-align:center;text-wrap:balance}
+html[lang="en"] .howto h4{font-family:var(--f-roman);font-size:13px;letter-spacing:1.7px}
+html[lang="en"] .howto li{font-size:12.5px;letter-spacing:.65px;line-height:1.55}
+html[lang="en"] .daily .dt1{font-family:var(--f-roman);font-size:12px;letter-spacing:1.1px;line-height:1.35}
+html[lang="en"] .daily .dt2{font-size:11px;letter-spacing:.7px;line-height:1.45}
+html[lang="en"] #spreads{gap:12px;align-items:stretch}
+html[lang="en"] .sp-card{min-width:0;padding:18px 8px 14px;display:flex;flex-direction:column;align-items:center}
+html[lang="en"] .sp-card .n{font-family:var(--f-roman);font-size:12.5px;letter-spacing:1px;line-height:1.35;min-height:34px;display:flex;align-items:center;justify-content:center;text-wrap:balance}
+html[lang="en"] .sp-card .d{font-size:10.5px;letter-spacing:.45px;line-height:1.45;min-height:31px;display:flex;align-items:flex-start;justify-content:center;text-wrap:balance}
+html[lang="en"] #gate .gt{font-family:var(--f-roman);font-size:17px;letter-spacing:1.9px;text-indent:2px}
+html[lang="en"] #quote p{font-size:13.5px;letter-spacing:.65px;line-height:1.75}
+html[lang="en"] .selene{font-family:Georgia,'Times New Roman',serif;letter-spacing:.8px;line-height:1.7}
+html[lang="en"] #dirRow{gap:10px}
+html[lang="en"] .dir-chip{font-size:13px;letter-spacing:.8px;padding:10px 20px}
+html[lang="en"] #introSteps{font-size:11.5px;letter-spacing:.55px;gap:18px}
+html[lang="en"] #introMeta{font-size:11.5px;letter-spacing:.7px;text-align:center;max-width:min(820px,92vw);line-height:1.55}
+html[lang="en"] #questionLabel{letter-spacing:.8px}
+html[lang="en"] #questionHint{letter-spacing:.45px}
+html[lang="en"] #drawCount{letter-spacing:1.3px}
+html[lang="en"] .slot .s-lb{font-size:9.5px;letter-spacing:.25px;line-height:1.25;white-space:normal;text-align:center;min-height:25px}
+html[lang="en"] #rdHead h2{font-family:var(--f-roman);font-size:clamp(25px,2.8vw,36px);letter-spacing:1.6px;line-height:1.25;text-wrap:balance}
+html[lang="en"] #rdMeta span{font-size:11.5px;letter-spacing:.55px;line-height:1.4;text-align:center}
+html[lang="en"] .tcWrap .poslb{font-size:10.5px;letter-spacing:.45px;line-height:1.35;white-space:normal;text-align:center;max-width:128px;min-height:28px;text-wrap:balance}
+html[lang="en"] .ib-name{font-family:var(--f-roman);font-size:16px;letter-spacing:.7px;line-height:1.4}
+html[lang="en"] .ib-pos,html[lang="en"] .ib-ori,html[lang="en"] .ib-kw,html[lang="en"] .ib-cor{letter-spacing:.55px}
+html[lang="en"] .ib p,html[lang="en"] #synBody p,html[lang="en"] #aiBody{letter-spacing:.35px;line-height:1.85}
+html[lang="en"] #synth h3,html[lang="en"] #aiPanel h3,html[lang="en"] .mtitle{font-family:var(--f-roman);letter-spacing:1.3px;line-height:1.35;text-wrap:balance}
+html[lang="en"] #synth h3{font-size:18px}
+html[lang="en"] #aiPanel h3{font-size:16px}
+html[lang="en"] .mtitle{font-size:20px}
+html[lang="en"] .act{font-size:12.5px;letter-spacing:.75px;line-height:1.35;padding:11px 20px}
+html[lang="en"] #dailyInfo .dn,html[lang="en"] #adInfo h4{font-family:var(--f-roman);letter-spacing:.75px;line-height:1.35}
+html[lang="en"] #dailyInfo .dk,html[lang="en"] #dailyInfo .dm,html[lang="en"] #adInfo .sec p,html[lang="en"] .about-p{letter-spacing:.35px}
 
-/* English desktop navigation needs more room; collapse it earlier. */
-@media(max-width:1180px){
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #menuBtn{display:flex;order:4}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #langSwitch{order:3}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #topnav{justify-content:space-between;gap:8px}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #navTitle{flex:1;justify-content:center;text-align:center}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #topnav .navside{
-    display:none;
-    position:fixed;
-    left:12px;
-    right:12px;
-    top:70px;
-    z-index:90;
-    flex-direction:column;
-    gap:4px;
-    padding:10px;
-    border:1px solid var(--line);
-    border-radius:12px;
-    background:rgba(8,5,18,.96);
-    backdrop-filter:blur(12px);
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #topnav.menu-open .navside{display:flex}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #topnav.menu-open .navside:first-of-type{top:70px}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #topnav.menu-open .navside:nth-of-type(2){top:196px}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #topnav .navside .navlink{
-    display:block!important;
-    padding:10px 12px;
-    text-align:center;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .navico{display:none}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #mobileMenuLabel{display:block}
-}
+@media(min-width:1181px){html[lang="en"] #rightcol{width:500px} html[lang="en"] .sp-card{max-width:158px}}
+@media(min-width:981px) and (max-width:1180px){html[lang="en"] #rightcol{width:430px}html[lang="en"] #leftcol{width:205px}html[lang="en"] .sp-card{max-width:136px}}
 
-@media(min-width:1181px){
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #leftcol{width:248px}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #rightcol{width:446px}
+/* Collapse navigation earlier in English so long labels never collide. */
+@media(max-width:1120px) and (min-width:981px){
+  #menuBtn{display:flex;order:4}
+  #langSwitch{order:3}
+  #topnav{justify-content:space-between;gap:8px}
+  #navTitle{flex:1;text-align:center}
+  #topnav .navside{display:none;position:fixed;left:12px;right:12px;top:70px;z-index:90;flex-direction:column;gap:4px;padding:10px;border:1px solid var(--line);border-radius:12px;background:rgba(8,5,18,.96);backdrop-filter:blur(12px)}
+  #topnav.menu-open .navside{display:flex}
+  #topnav.menu-open .navside:first-of-type{top:70px}
+  #topnav.menu-open .navside:nth-of-type(2){top:196px}
+  #topnav .navside .navlink{display:block!important;padding:10px 12px;text-align:center}
+  .navico{display:none}
 }
-
 @media(max-width:760px){
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #navTitle{
-    font-size:17px;
-    letter-spacing:1px;
-    gap:5px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #heroTitle{
-    font-size:clamp(31px,10vw,42px);
-    letter-spacing:.5px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #heroSub{
-    font-size:13px;
-    padding:0 8px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #spreads{
-    gap:8px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .sp-card{
-    padding-left:7px;
-    padding-right:7px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #introSteps{
-    flex-direction:column;
-    gap:7px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #slotRow{
-    gap:5px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .slot{
-    width:54px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .slot .s-fr{
-    width:48px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .slot .s-lb{
-    font-size:8.5px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .tcWrap .poslb{
-    width:min(118px,31vw);
-    font-size:9.5px;
-  }
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) .mbox{
-    padding-left:20px;
-    padding-right:20px;
-  }
+  #topnav{height:68px;padding:0 10px;gap:6px}
+  html[lang="en"] #navTitle{font-size:15px;letter-spacing:.45px;gap:4px;min-width:0;overflow:hidden;text-overflow:ellipsis;justify-content:center}
+  html[lang="en"] #navTitle .st{font-size:10px}
+  html[lang="en"] #heroTitle{font-size:clamp(30px,10vw,42px)}
+  html[lang="en"] #heroSub{font-size:12.5px}
+  html[lang="en"] #spreads{gap:7px}
+  html[lang="en"] .sp-card{padding:15px 5px 12px}
+  html[lang="en"] .sp-card .n{font-size:10.5px;letter-spacing:.45px;min-height:30px}
+  html[lang="en"] .sp-card .d{font-size:9.5px;min-height:40px}
+  html[lang="en"] #rdHintFlip{font-size:11px!important;letter-spacing:.45px!important;line-height:1.55;text-align:center}
+  html[lang="en"] #rdActions{gap:9px}
+  html[lang="en"] .act{width:min(100%,320px)}
+}
+@media(max-width:430px){
+  #langSwitch button{padding:4px 5px;font-size:8.5px;letter-spacing:.6px}
+  #menuBtn{width:34px;height:34px}
+  html[lang="en"] #navTitle{font-size:13px}
+  html[lang="en"] #gate .gt{font-size:15px;letter-spacing:1.2px}
+  html[lang="en"] #introSteps{flex-direction:column;align-items:center;gap:7px}
 }
 
-
-/* ===== Mobile runtime hardening ===== */
-#sndBtn svg{width:20px;height:20px;display:block}
-#sndBtn .sound-wave{transform-origin:center;animation:soundPulse 1.8s ease-in-out infinite}
-#sndBtn.off .sound-wave{animation:none}
-@keyframes soundPulse{0%,100%{opacity:.65}50%{opacity:1}}
-
-@supports (height:100dvh){
-  html,body{height:100dvh;min-height:100dvh}
-  .layer{height:100dvh;min-height:100dvh}
-}
-
-@media(max-width:980px){
-  html,body{width:100%;max-width:100%;overflow-x:hidden}
-  body{min-height:100dvh;overscroll-behavior-y:none}
-  #vwrap,#starfield,#bgHome,#veil,#flash{width:100vw;max-width:100vw}
-  #vwrap video{transform:translateZ(0);-webkit-transform:translateZ(0)}
-  html.mobile-no-video #vwrap{display:none}
-
-  #topnav{
-    height:calc(64px + env(safe-area-inset-top));
-    min-height:64px;
-    padding-top:env(safe-area-inset-top);
-    padding-left:calc(12px + env(safe-area-inset-left));
-    padding-right:calc(12px + env(safe-area-inset-right));
-  }
-  #topnav .navside{
-    left:calc(10px + env(safe-area-inset-left));
-    right:calc(10px + env(safe-area-inset-right));
-  }
-  #topnav.menu-open .navside:first-of-type{top:calc(64px + env(safe-area-inset-top))}
-  #topnav.menu-open .navside:nth-of-type(2){top:calc(190px + env(safe-area-inset-top))}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #topnav.menu-open .navside:first-of-type{top:calc(64px + env(safe-area-inset-top))}
-  html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"]) #topnav.menu-open .navside:nth-of-type(2){top:calc(190px + env(safe-area-inset-top))}
-
-  #home{
-    width:100%;
-    min-height:100dvh;
-    padding-top:calc(78px + env(safe-area-inset-top));
-    padding-bottom:calc(28px + env(safe-area-inset-bottom));
-    overflow-x:hidden;
-  }
-
-  .layer{width:100%;max-width:100%;min-height:100dvh}
-  #introLayer{
-    justify-content:flex-start;
-    gap:14px;
-    padding:calc(80px + env(safe-area-inset-top)) 14px calc(24px + env(safe-area-inset-bottom));
-    overflow-y:auto;
-    overflow-x:hidden;
-    -webkit-overflow-scrolling:touch;
-    overscroll-behavior-y:contain;
-  }
-  #introLine{flex:0 0 auto}
-  #dirRow{flex:0 0 auto}
-  #questionWrap{flex:0 0 auto;width:min(680px,94vw)}
-  #introMeta,#introSteps,#introGo{flex:0 0 auto}
-  #introGo{min-height:46px;margin-bottom:4px}
-
-  #drawLayer{
-    justify-content:flex-start;
-    gap:10px;
-    padding:calc(70px + env(safe-area-inset-top)) 0 calc(10px + env(safe-area-inset-bottom));
-    overflow-y:auto;
-    overflow-x:hidden;
-    -webkit-overflow-scrolling:touch;
-    overscroll-behavior-y:contain;
-  }
-  #drawTop{width:100%;flex:0 0 auto;padding:0 8px;gap:9px}
-  #slotRow{max-height:none;overflow:visible;padding-left:8px;padding-right:8px}
-  #fanWrap{
-    width:100%;
-    height:210px;
-    min-height:210px;
-    margin-top:auto;
-    flex:0 0 auto;
-    overflow-x:auto;
-    overflow-y:hidden;
-    touch-action:pan-x;
-    overscroll-behavior-x:contain;
-    -webkit-overflow-scrolling:touch;
-  }
-  .fc{touch-action:manipulation;-webkit-user-drag:none}
-  #revealBtn{min-height:44px;display:flex;align-items:center;justify-content:center}
-
-  #burstLayer{padding-bottom:calc(7vh + env(safe-area-inset-bottom))}
-  #skipBtn{right:calc(14px + env(safe-area-inset-right));bottom:calc(14px + env(safe-area-inset-bottom))}
-  #exitRitual{top:calc(10px + env(safe-area-inset-top));right:calc(12px + env(safe-area-inset-right));font-size:12px;letter-spacing:1px;padding:8px 12px}
-
-  #readingLayer{height:100dvh;min-height:100dvh;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
-  #rdInner{padding-top:calc(72px + env(safe-area-inset-top));padding-bottom:calc(84px + env(safe-area-inset-bottom))}
-
-  .modal{padding:calc(12px + env(safe-area-inset-top)) calc(10px + env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) calc(10px + env(safe-area-inset-left))}
-  .mbox{max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));-webkit-overflow-scrolling:touch}
-
-  #sndBtn{
-    left:calc(14px + env(safe-area-inset-left));
-    bottom:calc(14px + env(safe-area-inset-bottom));
-    width:44px;
-    height:44px;
-    padding:0;
-    touch-action:manipulation;
-  }
-}
-
-@media(max-width:560px){
-  #rightcol,#leftcol{width:min(100%,430px)}
-  #rightcol{gap:15px;padding-top:4px}
-  #spreads{width:100%;gap:7px}
-  .sp-card{min-width:0;padding-top:14px;padding-bottom:12px}
-  .sp-card .ico{height:44px;margin-bottom:6px}
-  .sp-card .ico svg{height:42px}
-  #gate{height:64px}
-  #quote{padding:14px 16px}
-  #questionInput{min-height:72px}
-  #introSteps{width:100%;align-items:center}
-  #drawLine{padding-left:10px;padding-right:10px}
-}
-
+/* ===== Music / sound control ===== */
+#sndBtn{appearance:none;-webkit-appearance:none;font-family:var(--f-roman);font-weight:600}
+#sndBtn span{font-size:18px;line-height:1;transform:translateY(-1px)}
+#sndBtn.on{border-color:rgba(236,217,162,.72);box-shadow:0 0 16px rgba(139,92,246,.38),inset 0 0 12px rgba(201,164,92,.12)}
+#sndBtn.on span{animation:soundPulse 2.8s ease-in-out infinite}
+#sndBtn.off span{opacity:.55}
+#sndBtn.off::after{content:"";position:absolute;width:25px;height:1.5px;background:var(--ink-dim);transform:rotate(-45deg);border-radius:2px}
+@keyframes soundPulse{0%,100%{transform:translateY(-1px) scale(1);text-shadow:0 0 5px rgba(201,164,92,.2)}50%{transform:translateY(-1px) scale(1.08);text-shadow:0 0 12px rgba(236,217,162,.75)}}
+@media(max-width:560px){#sndBtn{left:12px;bottom:12px;width:40px;height:40px}}
 </style>
 
 </head>
@@ -1073,11 +709,11 @@ html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"])
 <div id="bgHome"></div>
 <div id="vwrap">
   <!-- v1: 点击进入后的等待/凝神画面 -->
-  <video id="v1" muted playsinline webkit-playsinline preload="none" poster="assets/img/poster-open.jpg" data-src="assets/video/opening.mp4" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"></video>
+  <video id="v1" muted playsinline preload="none" poster="assets/img/poster-open.jpg" src="assets/video/opening.mp4"></video>
   <!-- v2: 发牌与抽牌池过程 -->
-  <video id="v2" muted playsinline webkit-playsinline preload="none" poster="assets/img/poster-rise.jpg" data-src="assets/video/rise.mp4" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"></video>
+  <video id="v2" muted playsinline preload="none" poster="assets/img/poster-rise.jpg" src="assets/video/rise.mp4"></video>
   <!-- v3: 抽牌完成后的揭示动画 -->
-  <video id="v3" muted playsinline webkit-playsinline preload="none" data-src="assets/video/burst.mp4" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"></video>
+  <video id="v3" muted playsinline preload="none" src="assets/video/burst.mp4"></video>
 </div>
 <div id="veil"></div>
 <div id="flash"></div>
@@ -1089,13 +725,13 @@ html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"])
     <span class="navlink" data-nav="start">Start Reading</span>
     <span class="navlink" data-nav="spreads">Spreads</span>
   </nav>
-  <div id="navTitle"><span class="st">✦</span>arcunara<span class="st">✦</span></div>
+  <div id="navTitle"><span class="st">✦</span>Xingyuan Tarot<span class="st">✦</span></div>
   <nav class="navside">
     <span class="navlink" data-nav="daily">Daily Tarot</span>
     <span class="navlink" data-nav="archive">Tarot Library</span>
     <span class="navlink" data-nav="about">About</span>
   </nav>
-  <div id="langSwitch" data-ui aria-label="Language"></div>
+  <div id="langSwitch" data-ui aria-label="Language"><button type="button" data-lang="en" class="on" aria-pressed="true">EN</button><button type="button" data-lang="zh" aria-pressed="false">中文</button></div>
   <button id="menuBtn" type="button" data-ui aria-expanded="false" aria-label="Open navigation">☰</button>
   <div class="navico" data-nav="daily" title="Daily Tarot"><svg viewBox="0 0 100 100"><path d="M50 8 L58 42 L92 50 L58 58 L50 92 L42 58 L8 50 L42 42 Z" fill="currentColor"/></svg></div>
 </header>
@@ -1208,10 +844,10 @@ html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"])
     <div id="aiPanel" class="pnl"><div class="corners"></div>
       <h3>◈ AI Insight · Deep Reading ◈</h3>
       <div id="aiBody"></div>
-      <div id="aiStatus">Processed securely on our server — no keys or data are exposed in your browser.</div>
+      <div id="aiStatus">Powered through the site backend — no API key is stored in the browser.</div>
     </div>
     <div id="rdActions">
-      <div class="act vio" data-act="ai">Invoke AI Vision</div>
+      <div class="act vio" data-act="ai">Ask AI for a Deeper Reading</div>
       <div class="act" data-act="copy">Copy Reading</div>
       <div class="act" data-act="again">Read Again</div>
       <div class="act" data-act="homeback">Back Home</div>
@@ -1243,8 +879,8 @@ html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"])
 </div></div>
 
 <div class="modal" id="mAbout" role="dialog" aria-modal="true" aria-hidden="true"><div class="mbox pnl"><div class="corners"></div><div class="mclose" data-close>✕</div>
-  <div class="mtitle">About arcunara</div>
-  <p class="about-p"><b>arcunara</b> is a focused tarot reading experience designed for reflection, pattern recognition, and intentional decision-making.</p>
+  <div class="mtitle">About Xingyuan Tarot</div>
+  <p class="about-p"><b>Xingyuan Tarot</b> is a focused tarot reading experience designed for reflection, pattern recognition, and intentional decision-making.</p>
   <p class="about-p">The reading uses the 78-card tarot deck with Single Card, Three Card, and Celtic Cross spreads. Tarot is presented as a reflective tool rather than a fixed prediction of the future.</p>
   <p class="about-p" style="color:var(--ink-dim);font-size:12.5px">For personal reflection and entertainment only. It is not medical, legal, financial, or other professional advice.</p>
 </div></div>
@@ -1252,7 +888,7 @@ html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"])
 </div></div>
 
 <div id="toast"></div>
-<button id="sndBtn" type="button" data-ui aria-pressed="true" aria-label="Mute sound" title="Mute sound"></button>
+<button id="sndBtn" type="button" title="Music & sound" aria-label="Turn music and sound off" aria-pressed="true"><span aria-hidden="true">♫</span></button>
 
 <script>
 /* ═══════════════════ 数据层 ═══════════════════ */
@@ -1493,7 +1129,7 @@ const BLESS=[
  '牌已言尽，路在足下。愿你带着这份看见，温柔而坚定地前行。✦',
  '命运掷出星辰，而落子的手，始终是你自己的。✦',
  '愿这一次凝视，成为你与自己和解的开始。✦',
- '夜再深，星光仍在。愿你被世界温柔相待。✦',
+ '夜再深，星垣仍在。愿你被世界温柔相待。✦',
  '塔罗照见的从来不是未来，而是此刻敢于直视它的你。✦'
 ];
 
@@ -1561,306 +1197,111 @@ const EN_BLESS=[
 const EN_LUCK={wands:['burnished gold or crimson','a candle'],cups:['pearl white or ocean blue','a shell or a glass of water'],swords:['silver gray or sky blue','a feather or wind chime'],pents:['deep green or earth gold','a stone or small plant'],major:['black and gold','a star-shaped token']};
 const EN_MINOR_FULL={"wands0":{"kw":"inspiration · new venture · creative spark","kwr":"delay · low energy · false start","up":"A fresh creative impulse is asking for expression. Begin before the idea cools, even if the first step is small.","rev":"The spark is present but struggling to catch. Protect the idea, restore your energy, and avoid forcing a launch before the direction is clear."},"wands1":{"kw":"planning · foresight · choosing a direction","kwr":"hesitation · limited vision · fear of expansion","up":"You have enough perspective to choose a direction and plan beyond the immediate horizon. Commit to the path that creates room to grow.","rev":"The future feels smaller because uncertainty is shaping the plan. Recheck your assumptions, then choose rather than waiting for perfect certainty."},"wands2":{"kw":"expansion · progress · results approaching","kwr":"delay · obstacles · weak follow-through","up":"What you set in motion is beginning to travel beyond you. Keep your position steady while preparing for a larger opportunity or response.","rev":"Progress is slower than expected or a plan is meeting friction. Adjust logistics and expectations without abandoning the larger direction too quickly."},"wands3":{"kw":"celebration · stability · milestone","kwr":"unstable foundation · delayed celebration · tension at home","up":"A meaningful milestone deserves recognition. Enjoy the sense of belonging and stability before moving immediately to the next goal.","rev":"The appearance of stability may be masking unfinished tension. Strengthen the foundation before treating the situation as fully settled."},"wands4":{"kw":"competition · friction · testing ideas","kwr":"conflict easing · compromise · avoiding useless struggle","up":"Different agendas are colliding, but the friction can sharpen skill and reveal stronger ideas. Compete without turning every disagreement into a personal battle.","rev":"The conflict can be reduced if everyone stops fighting for the last word. Redirect energy toward coordination, rules, or a workable compromise."},"wands5":{"kw":"victory · recognition · public success","kwr":"self-doubt · lack of recognition · hollow praise","up":"Your effort is visible and recognition is justified. Accept the win while remembering that credibility is maintained through what you do next.","rev":"External validation may be missing, delayed, or less satisfying than expected. Rebuild confidence around the quality of the work, not the applause."},"wands6":{"kw":"defense · conviction · holding your ground","kwr":"exhaustion · giving ground · overwhelmed","up":"Your position can be defended, but it requires clarity about what truly matters. Hold the essential boundary and stop wasting energy on every challenge.","rev":"Constant defense is draining your capacity. Decide which battle deserves your effort and where stepping back would actually protect your strength."},"wands7":{"kw":"rapid movement · messages · momentum","kwr":"delay · scattered action · poor timing","up":"Events are accelerating and communication may arrive quickly. Respond with focus so speed becomes momentum rather than noise.","rev":"Too many moving parts are creating crossed signals or delays. Slow the sequence, confirm priorities, and send the right message once."},"wands8":{"kw":"resilience · persistence · last stand","kwr":"fatigue · hypervigilance · depleted boundaries","up":"You have already endured a great deal, and the finish line is closer than it feels. Protect your remaining energy and stay with what still matters.","rev":"Guarding against every possible problem has become its own burden. Rest, ask for support, and distinguish present danger from old defensive habits."},"wands9":{"kw":"burden · responsibility · overload","kwr":"release · delegation · dropping excess weight","up":"You are carrying the full consequence of earlier commitments. Finish responsibly, but do not confuse competence with having to carry everything alone.","rev":"Some responsibilities no longer belong in your hands. Delegate, simplify, or release the task that is consuming more than it contributes."},"wands10":{"kw":"enthusiasm · discovery · bold message","kwr":"inconsistency · impatience · short-lived excitement","up":"Curiosity is opening a new path. Explore the idea, message, or opportunity with enthusiasm while allowing yourself to be a beginner.","rev":"Excitement is outrunning commitment. Choose one idea worth developing instead of chasing every spark that appears."},"wands11":{"kw":"adventure · confidence · decisive pursuit","kwr":"recklessness · impatience · unfinished action","up":"The moment favors bold movement and direct pursuit. Channel the fire toward one destination so courage produces progress.","rev":"Speed without direction becomes wasteful or disruptive. Pause long enough to know what you are actually trying to win."},"wands12":{"kw":"confidence · warmth · independence","kwr":"self-doubt · comparison · burnout","up":"Your presence has influence because it is grounded in genuine enthusiasm. Lead visibly, encourage others, and trust your own creative authority.","rev":"Comparison or overextension is dimming your confidence. Reclaim energy by returning to what makes you feel internally alive rather than externally approved."},"wands13":{"kw":"vision · leadership · enterprise","kwr":"domination · impatience · misuse of power","up":"A larger vision needs someone willing to take responsibility for direction. Lead with confidence, strategy, and enough space for others to contribute.","rev":"Forceful leadership is becoming control. Replace pressure with clarity, and measure authority by the strength you create in others."},"cups0":{"kw":"emotional opening · love · intuitive renewal","kwr":"emotional blockage · emptiness · withheld feeling","up":"The heart is opening to a new emotional experience, relationship, or creative current. Receive it without demanding that it prove its future immediately.","rev":"Feelings may be blocked, suppressed, or poured out without replenishment. Restore your own emotional capacity before asking the situation to give more."},"cups1":{"kw":"mutual attraction · partnership · reciprocity","kwr":"imbalance · disconnection · unequal exchange","up":"A relationship or agreement can deepen through mutual respect and equal participation. The strongest signal here is reciprocity.","rev":"Two people may want connection but be operating from different expectations. Name the imbalance instead of hoping chemistry will solve it."},"cups2":{"kw":"friendship · community · shared joy","kwr":"over-socializing · gossip · group tension","up":"Supportive relationships deserve to be enjoyed, not merely used for problem-solving. Celebrate with the people who genuinely want you to thrive.","rev":"A social circle may feel noisy, performative, or misaligned. Step back from group dynamics that leave you more depleted than connected."},"cups3":{"kw":"apathy · contemplation · missed opportunity","kwr":"renewed interest · re-engagement · emotional awakening","up":"Emotional fatigue is making it difficult to recognize what is being offered. Do not force enthusiasm, but look again before dismissing the opportunity.","rev":"Interest is returning after a period of withdrawal. Follow the small sign of curiosity that makes you want to participate in life again."},"cups4":{"kw":"grief · regret · focus on loss","kwr":"acceptance · recovery · renewed hope","up":"Loss deserves to be acknowledged without being allowed to define the entire landscape. Grieve what is gone, then notice what remains available.","rev":"You are beginning to turn toward what survived. Acceptance does not erase the past; it returns choice to the present."},"cups5":{"kw":"nostalgia · innocence · meaningful past","kwr":"living in the past · unresolved childhood themes · idealization","up":"A memory, old connection, or simpler value can offer genuine comfort. Take the kindness from the past without needing to recreate it exactly.","rev":"The past is exerting too much influence on the present. Separate useful memory from idealization and respond to the life that exists now."},"cups6":{"kw":"many options · imagination · temptation","kwr":"clarity · realistic choice · narrowing options","up":"Possibility is abundant, but not every attractive option is viable. Test dreams against values, facts, and the cost of choosing them.","rev":"The fog is lifting and priorities are becoming clearer. Make the choice that survives contact with reality rather than the one that only looks impressive."},"cups7":{"kw":"walking away · deeper purpose · emotional transition","kwr":"fear of leaving · drifting back · indecision","up":"Something may still be acceptable on the surface while no longer feeding the deeper self. Leaving can be an act of honesty rather than rejection.","rev":"You know a transition is needed but fear keeps reopening the old door. Decide whether you are staying from love or from avoidance."},"cups8":{"kw":"satisfaction · pleasure · wish fulfilled","kwr":"overindulgence · shallow satisfaction · unmet inner need","up":"There is real satisfaction available here. Enjoy the result, recognize what worked, and let pleasure be part of a healthy life.","rev":"Getting what you wanted may not be meeting the deeper need. Ask what kind of fulfillment cannot be bought, won, or displayed."},"cups9":{"kw":"emotional fulfillment · family harmony · belonging","kwr":"surface harmony · family strain · unmet expectations","up":"Connection, belonging, and shared emotional safety are strongly supported. Invest in the relationships that make success feel worth having.","rev":"The image of harmony may be stronger than the lived experience. Honest conversation is more healing than preserving an idealized picture."},"cups10":{"kw":"sensitive message · intuition · creative curiosity","kwr":"emotional immaturity · fantasy · blocked expression","up":"A gentle message, intuitive nudge, or creative idea deserves attention. Stay receptive and respond with curiosity rather than cynicism.","rev":"Feelings are being dramatized, denied, or expressed indirectly. Give the emotion a simple, honest form before it turns into confusion."},"cups11":{"kw":"romance · invitation · following the heart","kwr":"moodiness · unrealistic promise · charm without substance","up":"An invitation to move toward what you care about is present. Let sincerity guide the gesture and allow emotion to become action.","rev":"Beautiful words may be outrunning reliability. Look for consistency before treating a romantic or creative promise as a foundation."},"cups12":{"kw":"empathy · intuition · emotional maturity","kwr":"overgiving · emotional absorption · weak boundaries","up":"You can hold deep feeling without being ruled by it. Compassion is powerful here when paired with clear boundaries.","rev":"Empathy has become emotional absorption. Care for others without making their inner weather your responsibility."},"cups13":{"kw":"emotional steadiness · compassion · diplomacy","kwr":"suppressed feeling · manipulation · emotional volatility","up":"Calm emotional leadership can stabilize the situation. Respond with compassion while remaining responsible for your own choices.","rev":"Controlled appearances may be hiding unresolved emotion or subtle manipulation. Name what is actually being felt before trying to manage the room."},"swords0":{"kw":"truth · breakthrough · mental clarity","kwr":"confusion · misinformation · poor judgment","up":"A decisive insight cuts through ambiguity. Use the clarity to name the truth, frame the problem correctly, and make the next decision.","rev":"The mind is crowded by mixed information or premature conclusions. Verify facts and postpone irreversible choices until the picture sharpens."},"swords1":{"kw":"stalemate · difficult choice · guarded neutrality","kwr":"decision emerging · information revealed · ending avoidance","up":"A decision has been postponed to preserve temporary balance. Gather the missing fact, then choose instead of treating indecision as safety.","rev":"Avoidance is becoming harder to maintain. New information can break the stalemate if you are willing to look directly at it."},"swords2":{"kw":"heartbreak · painful truth · separation","kwr":"healing · forgiveness · releasing pain","up":"A painful truth or separation needs honest recognition. Healing begins when the wound is allowed to be real rather than minimized.","rev":"The sharpest part of the pain is beginning to pass. Recovery grows through forgiveness, perspective, and reducing repeated contact with the wound."},"swords3":{"kw":"rest · recovery · strategic pause","kwr":"restlessness · burnout · returning too soon","up":"Your mind and body need deliberate recovery. A pause is productive when it restores the capacity to think clearly.","rev":"You may be trying to return before recovery is complete, or resting without actually disconnecting. Make restoration specific and protected."},"swords4":{"kw":"conflict · hollow victory · power struggle","kwr":"reconciliation · de-escalation · making amends","up":"Winning the argument may cost more than the issue is worth. Choose the outcome you want after the conflict, not merely the feeling of being right.","rev":"There is an opening to end a draining dispute. Accountability and a practical peace are more valuable than one final victory."},"swords5":{"kw":"transition · moving on · calmer waters","kwr":"unfinished business · resistance to transition · difficult departure","up":"You are moving away from turbulence, even if the destination is not fully known. Carry the lesson, not the entire storm.","rev":"A transition is delayed because something still needs to be resolved or consciously left behind. Finish the necessary conversation or task before departure."},"swords6":{"kw":"strategy · discretion · independent action","kwr":"truth exposed · confession · failed strategy","up":"A subtle approach may be necessary, but strategy should not become self-deception. Protect sensitive plans while staying honest about your motives.","rev":"Hidden information is likely to surface, or an indirect approach is no longer working. Transparency now reduces future damage."},"swords7":{"kw":"restriction · self-limiting beliefs · feeling trapped","kwr":"release · new perspective · reclaiming agency","up":"The situation feels constrained, but part of the prison is built from assumptions about what you cannot do. Test one boundary instead of accepting all of them.","rev":"A limiting story is losing its grip. Use the new perspective to take one action that proves you have more choice than before."},"swords8":{"kw":"anxiety · insomnia · catastrophic thinking","kwr":"relief · support · mental recovery","up":"Fear is amplifying possibilities into certainties. Put the worry into words, separate facts from forecasts, and involve someone trustworthy if needed.","rev":"The mental pressure is beginning to ease. Continue reducing isolation and replace repetitive worry with concrete support or action."},"swords9":{"kw":"ending · rock bottom · finality","kwr":"recovery · surviving the worst · gradual renewal","up":"A painful cycle has reached its limit. The ending is severe, but it also means this exact pattern does not need to continue.","rev":"You are coming back from a low point. Recovery may be uneven, yet the direction is upward when you stop reopening what is already finished."},"swords10":{"kw":"curiosity · vigilance · new information","kwr":"gossip · defensiveness · careless communication","up":"Observe closely, ask better questions, and verify what you hear. Curiosity is useful when it serves understanding rather than suspicion.","rev":"Words can spread faster than understanding. Avoid gossip, reactive messages, and assumptions that have not been tested."},"swords11":{"kw":"decisive action · direct communication · ambition","kwr":"recklessness · aggression · rushing ahead","up":"A clear objective benefits from fast, direct action. Move decisively while keeping enough awareness to avoid unnecessary collateral damage.","rev":"Urgency is turning into aggression or poor judgment. Reduce speed until your method is as intelligent as your intention."},"swords12":{"kw":"discernment · independence · boundaries","kwr":"bitterness · coldness · defensive thinking","up":"Clear boundaries and sharp judgment are strengths now. Speak precisely, decide from evidence, and do not apologize for necessary standards.","rev":"Old hurt may be sharpening every interaction into a threat. Keep the boundary, but remove the unnecessary blade from the delivery."},"swords13":{"kw":"reason · authority · strategy · fairness","kwr":"rigidity · misuse of authority · emotional detachment","up":"The situation calls for principled analysis and a decision that can be explained logically. Lead with standards, evidence, and consistency.","rev":"Logic is being used as a shield or weapon. Reconsider whether the decision is truly fair or simply easier to defend intellectually."},"pents0":{"kw":"material opportunity · new resource · grounded beginning","kwr":"missed opportunity · weak foundation · poor planning","up":"A practical opportunity can become something substantial if it is treated like a seed: planted carefully, funded realistically, and tended consistently.","rev":"The opportunity is not secure yet. Strengthen the plan, budget, timing, or foundation before assuming future value."},"pents1":{"kw":"adaptability · juggling priorities · cash-flow balance","kwr":"overcommitment · disorganization · imbalance","up":"Multiple responsibilities can be managed if you stay flexible and keep the rhythm visible. Adjust early instead of waiting for one area to collapse.","rev":"Too many moving obligations are competing for limited capacity. Reduce complexity and rank priorities before adding anything new."},"pents2":{"kw":"teamwork · skill · collaboration","kwr":"poor coordination · weak standards · working alone","up":"Good work improves through cooperation, feedback, and clear standards. Your skill is more valuable when it connects effectively with other people's expertise.","rev":"The quality problem may be collaborative rather than individual. Clarify roles, expectations, and what 'done well' actually means."},"pents3":{"kw":"security · conservation · control","kwr":"release · flexibility · loosening control","up":"Protecting resources is sensible, but security should serve life rather than restrict it. Know what must be preserved and what can circulate.","rev":"Holding too tightly is creating stagnation. A measured release of money, control, or emotional possession can restore healthier movement."},"pents4":{"kw":"hardship · scarcity · exclusion","kwr":"recovery · assistance · improving conditions","up":"A period of scarcity or isolation may be making help difficult to see. Use available support systems rather than treating struggle as a private test.","rev":"Conditions are beginning to improve, especially if you accept practical help. Recovery strengthens through connection, not pride."},"pents5":{"kw":"generosity · reciprocity · resource exchange","kwr":"strings attached · unequal giving · debt of obligation","up":"Resources can flow in a fair and constructive way. Give where it genuinely helps and receive without shame when the exchange is balanced.","rev":"A gift, loan, or favor may carry hidden expectations or reinforce dependence. Make the terms explicit and protect dignity on both sides."},"pents6":{"kw":"patience · assessment · long-term investment","kwr":"impatience · poor return · abandoning too early","up":"The work is growing, but not on an instant timeline. Evaluate results honestly, adjust the method, and continue if the fundamentals remain sound.","rev":"Frustration with slow returns can tempt you to quit or double down blindly. Measure what is working before deciding whether to reinvest or exit."},"pents7":{"kw":"craftsmanship · practice · focused improvement","kwr":"boredom · low standards · stalled development","up":"Progress comes through repetition with attention. Keep refining the skill, process, or habit instead of looking for a shortcut around mastery.","rev":"Routine has become mechanical or careless. Raise the standard, learn a better method, or reconnect the work to a meaningful goal."},"pents8":{"kw":"self-sufficiency · earned comfort · independence","kwr":"dependence · overspending · fragile appearance of success","up":"You have created a degree of freedom through discipline and competence. Enjoy what you built without losing the habits that made it sustainable.","rev":"The image of comfort may be costing more than it provides. Rebuild financial or personal independence around what you can sustain privately."},"pents9":{"kw":"legacy · long-term wealth · family stability","kwr":"family financial tension · short-term thinking · unstable legacy","up":"The decision has consequences beyond the immediate moment. Favor structures, relationships, and resources that can remain valuable over time.","rev":"Long-term stability is being weakened by unresolved family, ownership, or financial issues. Repair the structure before protecting the appearance of security."},"pents10":{"kw":"study · practical opportunity · beginner mindset","kwr":"procrastination · unrealistic plan · poor follow-through","up":"A useful opportunity arrives through learning, training, or a practical first step. Treat curiosity as a commitment to practice, not just research.","rev":"The plan is staying theoretical. Choose the smallest real task that converts intention into evidence of progress."},"pents11":{"kw":"reliability · patience · steady progress","kwr":"stagnation · excessive caution · repetitive routine","up":"Slow, consistent work is the advantage here. Reliability will outperform dramatic effort if the direction remains correct.","rev":"Stability has become inertia. Keep the useful discipline, but introduce enough change to prevent the process from becoming a dead end."},"pents12":{"kw":"nurturing · practical care · grounded abundance","kwr":"self-neglect · overcaregiving · work-life imbalance","up":"Practical care creates real security. Build comfort through good routines, resourcefulness, and attention to both people and material needs.","rev":"You may be maintaining everyone else's stability at the expense of your own. Restore time, money, and care to your own needs."},"pents13":{"kw":"prosperity · stewardship · business judgment","kwr":"materialism · rigidity · controlling resources","up":"Strong stewardship can turn resources into durable value. Make decisions with patience, commercial realism, and responsibility for the long term.","rev":"Money, status, or control may be narrowing the decision. Measure success by what the resources enable, not by possession alone."}};
 
-/* ---- 多语言核心：en/zh 内联，其余语言运行时加载 /i18n/{lang}.js ---- */
-const LANGS={
- en:{label:'EN',full:'English',locale:'en-US',og:'en_US',latin:true},
- zh:{label:'中文',full:'中文',locale:'zh-CN',og:'zh_CN',latin:false},
- ja:{label:'日本語',full:'日本語',locale:'ja-JP',og:'ja_JP',latin:false},
- ko:{label:'한국어',full:'한국어',locale:'ko-KR',og:'ko_KR',latin:false},
- es:{label:'ES',full:'Español',locale:'es-ES',og:'es_ES',latin:true},
- fr:{label:'FR',full:'Français',locale:'fr-FR',og:'fr_FR',latin:true},
- de:{label:'DE',full:'Deutsch',locale:'de-DE',og:'de_DE',latin:true},
- pt:{label:'PT',full:'Português',locale:'pt-BR',og:'pt_BR',latin:true},
- ru:{label:'RU',full:'Русский',locale:'ru-RU',og:'ru_RU',latin:true}
-};
-const PACKS={};
 function isZH(){return state.lang==='zh';}
-function isLatin(){return !!(PACKS[state.lang]||PACKS.en).latin;}
-function fmt(tpl,o){return String(tpl).replace(/\{(\w+)\}/g,(m,k)=>o&&o[k]!==undefined?o[k]:m);}
-function P(){return PACKS[state.lang]||PACKS.en;}
-function buildEnPack(){
-  const cards={};
-  MAJORS.forEach((m,i)=>{const d=EN_MAJOR[i];cards['M'+i]={name:m.en,kw:d[0],kwr:d[1],up:d[2],rev:d[3]};});
-  for(const s of ['wands','cups','swords','pents'])for(let i=0;i<14;i++){const d=EN_MINOR_FULL[s+i];cards[s+i]={name:`${RANK_EN[i]} of ${SUITS[s].en}`,kw:d.kw,kwr:d.kwr,up:d.up,rev:d.rev};}
-  return {
-   latin:true,
-   meta:{
-    title:'arcunara · Interactive Tarot Reading',
-    desc:'arcunara — an immersive 78-card tarot reading experience with Single Card, Three Card, Celtic Cross, Daily Tarot, and a searchable tarot library.',
-    ogDesc:'A focused 78-card tarot experience with Single Card, Three Card, Celtic Cross, Daily Tarot, and a searchable tarot library.',
-    twDesc:'A tarot ritual for reflection, clarity, and choice.'
-   },
-   ui:{
-    navHome:'Home',navStart:'Start Reading',navSpreads:'Spreads',navDaily:'Daily Tarot',navArchive:'Tarot Library',navAbout:'About',
-    howtoTitle:'How It Works ✦',howto1:'Select a spread',howto2:'Choose a focus and optional question',howto3:'Draw your cards',howto4:'Read the overall insight, then details',
-    dt1:'Daily Tarot ›',dt2:'Reveal today\'s card',
-    heroTitle:'Seek the Guidance Within',heroSub:'A tarot ritual for reflection, clarity, and choice',
-    sp1n:'Single Card',sp1d:'A focused message',sp2n:'Three Card',sp2d:'Past · Present · Future',sp3n:'Celtic Cross',sp3d:'A deeper, complete reading',
-    gt:'Start Reading<b>✦</b>',
-    quote:'Tarot does not dictate the future.<br>It illuminates the choices already within you.',
-    deco1:'Past',deco2:'Present',deco3:'Future',
-    step1:'<b>I</b>Choose a focus',step2:'<b>II</b>Add a question if you wish',step3:'<b>III</b>Shuffle and draw',
-    introGo:'Shuffle the Cards ✦',revealBtn:'Reveal the Reading',skipBtn:'Skip animation ›',exitRitual:'✕ Exit reading',
-    rdTitle:"✦ Selene's Reading ✦",rdHintFlip:'The cards are revealing themselves… Tap a card to reveal it sooner',
-    synthTitle:'✦ Overall Reading ✦',aiTitle:'◈ AI Insight · Deep Reading ◈',
-    actAI:'Invoke AI Vision',actCopy:'Copy Reading',actAgain:'Read Again',actHome:'Back Home',
-    mtDaily:'Daily Tarot',mtArchive:'Tarot Library · 78 Cards',mtAbout:'About arcunara',mtAI:'Connect AI Insight',
-    arcBack:'‹ Back to deck',
-    about1:'<b>arcunara</b> is a focused tarot reading experience designed for reflection, pattern recognition, and intentional decision-making.',
-    about2:'The reading uses the 78-card tarot deck with Single Card, Three Card, and Celtic Cross spreads. Tarot is presented as a reflective tool rather than a fixed prediction of the future.',
-    about3:'For personal reflection and entertainment only. It is not medical, legal, financial, or other professional advice.',
-    questionLabel:'What would you like clarity on?',questionPh:'Optional — describe your question',questionHint:'Optional · 500 characters max',
-    dailySave:'Save to Journal',dailyShare:'Share Today\'s Card',
-    journalTitle:'Recent Journal',arcSearchPh:'Search cards, keywords, themes…',
-    aiStatus:'Processed securely on our server — no keys or data are exposed in your browser.',
-    introMeta:'Spread: {spread} · {positions}{more} ({n} cards)',
-    soundOn:'Turn sound on',soundOff:'Mute sound',soundOnToast:'Sound on ♪',soundOffToast:'Sound off',
-    chooseCard:'Choose card {n}',slotReturn:'Click to return this card',
-    drawCount:'Draw by instinct · Selected <b>{sel}</b> / {n}',
-    cardsUnit:'cards',questionShort:'Question',positionHint:'(Position: {d})',
-    overallLabel:'Overall',energyLabel:'Energy Pattern',storyLabel:'Spread Story',nextLabel:'Next Step',
-    kwLabel:'Keywords',corLabel:'Correspondence',
-    copySynth:'—— Synthesis ——',
-    copyFooter:'✦ Tarot is a reflective tool, not a fixed prediction of the future.',
-    copyToast:'Reading copied ✦',copyFailToast:'Copy failed. Please save a screenshot instead.',
-    aiLoading:'Selene is reading the pattern…',
-    aiNotConfigured:'AI Insight is not configured on this deployment yet. Implement POST /api/tarot/reading on the server and keep the model provider key server-side.',
-    journalEmpty:'No saved daily cards yet.',savedToast:'Saved to your tarot journal ✦',
-    shareToast:'Daily card ready to share ✦',shareFailToast:'Sharing is unavailable on this browser',
-    tabMajor:'Major Arcana',tabWands:'Wands',tabCups:'Cups',tabSwords:'Swords',tabPents:'Pentacles',
-    arcEmpty:'No matching tarot cards found.',upright:'Upright',reversed:'Reversed',
-    chooseSpreadToast:'Choose a spread card ✦',selectedToast:'Selected: {name} · {n} cards',
-    dailyToday:'Today:',dailyLean:'Lean into',dailyNotice:'Notice',dailyAvoid:'Avoid'
-   },
-   cards,
-   suits:EN_SUIT,
-   spreads:EN_SPREADS,
-   dirs:EN_DIRS,
-   lines:EN_LINES,
-   leads:{
-    single:'As your {pos}, this card asks you to center the reading on “{k0}” and let secondary concerns wait.',
-    three:['In the Past position, “{k0}” describes an influence that helped shape the present.','In the Present position, “{k0}” names the energy that most needs your attention now.','In the Future position, “{k0}” describes a likely theme if the current path continues. It is a direction, not a fixed fate.'],
-    celtic:['At the heart of the spread, “{k0}” defines the central condition.','Crossing the center, “{k0}” is both the challenge and the key to movement.','At the foundation, “{k0}” points to the deeper root beneath the situation.','In the recent past, “{k0}” is fading but still influences the present.','At the conscious goal, “{k0}” reflects what you believe you are trying to reach.','In the near future, “{k0}” is likely to appear next.','In the Self position, “{k0}” describes your current stance.','In the Environment position, “{k0}” describes the pressure or support around you.','In Hopes & Fears, “{k0}” shows what you both desire and worry about.','In the Outcome position, “{k0}” describes the direction of the current energy, not an unavoidable verdict.']
-   },
-   detail:{
-    corMajor:'Major Arcana {roman}',
-    corMinor:'Minor Arcana · {suit} · {element}',
-    ctx:{all:'Across the whole situation',love:'In love and relationships',career:'In career or study',wealth:'For money and opportunity',health:'For well-being'},
-    dir:'{ctx}, “{k0}” is the key theme. Let “{k1}” shape your next choice without treating the card as a fixed prediction.',
-    actions:{wands:'take one concrete action',cups:'have one honest conversation or listening moment',swords:'make one clear decision',pents:'strengthen one practical habit',major:'treat the message as a major reflection point'},
-    actTpl:'Action: {action}; {tail}',
-    actRev:'clear the blockage before pushing forward.',
-    actFwd:'translate the insight into a specific next step.'
-   },
-   synth:{
-    overall:'The center of this {spread} is “{ok}.” {q}{tail}',
-    overallQ:'For your question “{q},” ',
-    tailReflect:'the cards favor reflection, correction, and clearing unfinished pressure before acceleration.',
-    tailClear:'the message is comparatively direct: turn the insight into one observable choice.',
-    insMajor:'Major Arcana are prominent, suggesting a broader life lesson rather than a narrow tactical issue.',
-    insSuit:'{suit} is the strongest suit, emphasizing {theme}.',
-    insBal:'The elemental mix is balanced, so both inner awareness and practical action matter.',
-    insThree:'The story moves from {c0}, through {c1}, toward {c2}. The Future position is a direction of travel, not a fixed verdict.',
-    insCeltic:'The central tension is {c0} crossed by {c1}; the current path ultimately points toward {c9}.',
-    insSingle:'The single card keeps the reading focused: let “{ok}” guide the decision before adding secondary concerns.',
-    actRev:'Action: clear the blockage around “{ok}” first, then take one small step within seven days that proves the situation is moving.',
-    actFwd:'Action: use “{ok}” as a near-term decision filter and take one concrete step within seven days.',
-    bless:'Tarot can illuminate patterns and choices; it does not make the future fixed.'
-   }
-  };
-}
-function buildZhPack(){
-  const cards={};
-  MAJORS.forEach((m,i)=>cards['M'+i]={name:m.cn,kw:m.kw,kwr:m.kwr,up:m.up,rev:m.rev});
-  for(const s of ['wands','cups','swords','pents'])for(let i=0;i<14;i++){const row=MINOR[s][i];cards[s+i]={name:SUITS[s].cn+RANK_CN[i],kw:row[0],kwr:row[1],up:row[2],rev:row[3]};}
-  return {
-   latin:false,
-   meta:{
-    title:'arcunara · 塔罗互动占卜',
-    desc:'arcunara：支持 78 张塔罗牌、单张指引、三张牌阵、凯尔特十字、每日塔罗与可搜索牌库的多语言互动塔罗体验。',
-    ogDesc:'arcunara：支持 78 张塔罗牌、单张指引、三张牌阵、凯尔特十字、每日塔罗与可搜索牌库的多语言互动塔罗体验。',
-    twDesc:'一场用于自我觉察、获得清晰与理解选择的互动塔罗体验。'
-   },
-   ui:{
-    navHome:'首页',navStart:'开始占卜',navSpreads:'牌阵选择',navDaily:'每日运势',navArchive:'塔罗档案',navAbout:'关于',
-    howtoTitle:'玩法说明 ✦',howto1:'选择牌阵',howto2:'选择方向并可填写具体问题',howto3:'抽取牌阵卡牌',howto4:'先看整体结论，再展开逐牌解析',
-    dt1:'每日塔罗运势 ›',dt2:'点击查看今日运势',
-    heroTitle:'探寻命运的指引',heroSub:'与塔罗对话，开启内心的智慧之旅',
-    sp1n:'单张指引',sp1d:'获得简要指引',sp2n:'三张牌阵',sp2d:'过去 · 现在 · 未来',sp3n:'凯尔特十字',sp3d:'深度全面解读',
-    gt:'开始占卜<b>✦</b>',
-    quote:'塔罗并非预言未来，<br>而是照亮你内心选择的明灯。',
-    deco1:'过去',deco2:'现在',deco3:'未来',
-    step1:'<b>壹</b>选择提问方向',step2:'<b>贰</b>可选填写具体问题',step3:'<b>叁</b>洗牌并抽牌',
-    introGo:'洗牌并抽牌 ✦',revealBtn:'揭示天启',skipBtn:'跳过动画 ›',exitRitual:'✕ 退出仪式',
-    rdTitle:'✦ 塞勒涅的启示 ✦',rdHintFlip:'牌灵正在依序显形……亦可轻点牌面提前揭示',
-    synthTitle:'✦ 整体解读 ✦',aiTitle:'◈ AI 灵视 · 深度解读 ◈',
-    actAI:'祈唤 AI 灵视',actCopy:'复制解读文本',actAgain:'再占一卦',actHome:'回到首页',
-    mtDaily:'每日塔罗运势',mtArchive:'塔罗档案 · 78 张命运之书',mtAbout:'关于 arcunara',mtAI:'连接 AI 灵视',
-    arcBack:'‹ 返回牌库',
-    about1:'<b>arcunara</b> 是一个专注于塔罗牌阅读的互动体验，用于自我觉察、理解模式与辅助做出更有意识的选择。',
-    about2:'系统使用完整 78 张塔罗牌，支持单张指引、三张牌阵和凯尔特十字。塔罗在这里被视为自我反思工具，而不是对未来的固定预言。',
-    about3:'内容仅用于个人反思与娱乐，不构成医疗、法律、金融或其他专业建议。',
-    questionLabel:'你希望从什么问题中获得清晰指引？',questionPh:'选填 — 描述你的具体问题',questionHint:'选填 · 最多 500 字符',
-    dailySave:'保存到塔罗日记',dailyShare:'分享今日牌',
-    journalTitle:'最近塔罗日记',arcSearchPh:'搜索牌名、关键词、主题…',
-    aiStatus:'解读请求由站点服务器安全处理，密钥与数据不会暴露在浏览器中。',
-    introMeta:'当前牌阵：{spread} · {positions}{more}（共 {n} 张）',
-    soundOn:'开启音效',soundOff:'关闭音效',soundOnToast:'音效已开启 ♪',soundOffToast:'音效已关闭',
-    chooseCard:'选择第 {n} 张牌',slotReturn:'点击放回此牌',
-    drawCount:'凭直觉抽取 · 已选 <b>{sel}</b> ／ {n}',
-    cardsUnit:'张',questionShort:'问题',positionHint:'（此位含义：{d}）',
-    overallLabel:'整体结论',energyLabel:'能量模式',storyLabel:'牌阵故事',nextLabel:'下一步',
-    kwLabel:'关键词',corLabel:'对应',
-    copySynth:'—— 综合启示 ——',
-    copyFooter:'✦ 塔罗并非预言未来，而是照亮你内心选择的明灯。',
-    copyToast:'解读文本已复制 ✦',copyFailToast:'复制失败，请手动截屏保存',
-    aiLoading:'塞勒涅正在整理牌阵脉络……',
-    aiNotConfigured:'AI 深度解读尚未在当前部署环境配置。请在服务器实现 POST /api/tarot/reading，并由服务器安全保存第三方模型密钥。',
-    journalEmpty:'还没有保存的每日牌。',savedToast:'已保存到塔罗日记 ✦',
-    shareToast:'今日牌已分享 ✦',shareFailToast:'无法调用分享，请复制内容',
-    tabMajor:'大阿尔卡那',tabWands:'权杖',tabCups:'圣杯',tabSwords:'宝剑',tabPents:'星币',
-    arcEmpty:'没有找到匹配的塔罗牌。',upright:'正位',reversed:'逆位',
-    chooseSpreadToast:'点击卡片选择牌阵 ✦',selectedToast:'已选「{name}」· {n} 张',
-    dailyToday:'今日关键词：',dailyLean:'宜',dailyNotice:'宜',dailyAvoid:'忌'
-   },
-   cards,
-   suits:null,
-   spreads:SPREADS,
-   dirs:null,
-   lines:LINES,
-   leads:null,
-   detail:null,
-   synth:{
-    overall:'这次「{spread}」的核心落在「{ok}」。{q}{tail}',
-    overallQ:'围绕你的问题“{q}”，',
-    tailReflect:'牌面更强调先梳理阻力、情绪与未完成事项，再向外推进。',
-    tailClear:'牌面给出的方向相对清晰，重点是把洞见转成一个可执行的选择。',
-    insMajor:'大阿尔卡那占比较高，说明这更像一个阶段性人生课题，而非单一的小问题。',
-    insSuit:'{suit}能量较突出，重点关注{theme}。',
-    insBal:'牌面元素较均衡，需要同时兼顾内在感受与现实行动。',
-    insThree:'故事从「{c0}」走向「{c1}」，并流向「{c2}」。未来牌描述的是当前路径的趋势，不是固定结局。',
-    insCeltic:'十字中心的「{c0}」与挑战位「{c1}」构成主要张力，而结果位「{c9}」提示当前能量最可能流向的方向。',
-    insSingle:'单张牌将信息集中在一个主题上：先围绕「{ok}」做判断，暂时减少次要变量。',
-    actRev:'行动建议：先处理「{ok}」背后的卡点，再做下一步；七天内完成一个能够验证变化的小行动。',
-    actFwd:'行动建议：以「{ok}」作为近期决策过滤器，并在七天内落实一个具体动作。',
-    bless:'塔罗用于照见模式与选择，而不是替你决定未来。'
-   }
-  };
-}
-PACKS.en=buildEnPack();
-PACKS.zh=buildZhPack();
-function ensurePack(lang){
-  if(PACKS[lang])return Promise.resolve();
-  return new Promise((res,rej)=>{
-    const s=document.createElement('script');
-    s.src='i18n/'+lang+'.js';
-    s.onload=()=>{PACKS[lang]=window.I18N&&window.I18N[lang];PACKS[lang]?res():rej(new Error('bad pack'));};
-    s.onerror=()=>rej(new Error('load fail'));
-    document.head.appendChild(s);
-  });
-}
-function spreadName(k){return isZH()?SPREADS[k].name:P().spreads[k].name;}
-function posName(k,i){return isZH()?SPREADS[k].pos[i].t:P().spreads[k].pos[i][0];}
-function posDesc(k,i){return isZH()?SPREADS[k].pos[i].d:P().spreads[k].pos[i][1];}
-function dirLabel(k){return isZH()?DIRECTIONS[k].label:P().dirs[k];}
-function lineText(k,arg){const L=isZH()?LINES:P().lines;const v=L[k];return typeof v==='function'?v(arg):fmt(v,arg!==undefined?{n:arg}:null);}
-function cardName(c){return isZH()?c.cn:P().cards[c.id].name;}
-function oriText(rev){return rev?(isZH()?'逆位':P().ui.reversed):(isZH()?'正位':P().ui.upright);}
-function localDate(){return new Date().toLocaleDateString(P().locale,{year:'numeric',month:'long',day:'numeric',weekday:'long'});}
+function spreadName(k){return isZH()?SPREADS[k].name:EN_SPREADS[k].name;}
+function posName(k,i){return isZH()?SPREADS[k].pos[i].t:EN_SPREADS[k].pos[i][0];}
+function posDesc(k,i){return isZH()?SPREADS[k].pos[i].d:EN_SPREADS[k].pos[i][1];}
+function dirLabel(k){return isZH()?DIRECTIONS[k].label:EN_DIRS[k];}
+function lineText(k,arg){return isZH()?(typeof LINES[k]==='function'?LINES[k](arg):LINES[k]):(typeof EN_LINES[k]==='function'?EN_LINES[k](arg):EN_LINES[k]);}
+function cardName(c){return isZH()?c.cn:c.en;}
+function oriText(rev){return isZH()?(rev?'逆位':'正位'):(rev?'Reversed':'Upright');}
+function localDate(){return new Date().toLocaleDateString(isZH()?'zh-CN':'en-US',{year:'numeric',month:'long',day:'numeric',weekday:'long'});}
 function cardKeywords(c,rev){
   if(isZH()) return rev?c.kwr:c.kw;
-  const d=P().cards[c.id];return rev?d.kwr:d.kw;
+  if(c.arcana==='major') return EN_MAJOR[c.idx][rev?1:0];
+  const d=EN_MINOR_FULL[c.id];
+  return d?(rev?d.kwr:d.kw):`${EN_RANK[RANK_EN[c.idx]][0]} · ${rev?EN_SUIT[c.arcana].rev:EN_SUIT[c.arcana].up}`;
 }
 function cardMeaning(c,rev){
   if(isZH()) return rev?c.rev:c.up;
-  const d=P().cards[c.id];return rev?d.rev:d.up;
+  if(c.arcana==='major') return EN_MAJOR[c.idx][rev?3:2];
+  const d=EN_MINOR_FULL[c.id];
+  return d?(rev?d.rev:d.up):`${c.en} asks for a grounded, deliberate response.`;
 }
 function k0Local(c,rev){return cardKeywords(c,rev).split('·')[0].trim();}
 function k1Local(c,rev){const a=cardKeywords(c,rev).split('·').map(x=>x.trim());return a[1]||a[0];}
 function leadText(spread,i,k0){
  if(isZH()) return SPREADS[spread].pos[i].lead({k0,cn:''});
- const L=P().leads;
- if(spread==='single')return fmt(L.single,{k0,pos:posName(spread,i).toLowerCase()});
- return fmt(L[spread][i],{k0});
-}
-function rdMetaHTML(){
-  const u=P().ui,sp=SPREADS[state.spread];
-  return `<span class="g">${dirLabel(state.dir)}</span><span>${spreadName(state.spread)} · ${sp.n} ${u.cardsUnit}</span>${state.question?`<span>${u.questionShort}: ${escapeHTML(state.question).slice(0,96)}</span>`:''}<span>${localDate()}</span>`;
+ const t=posName(spread,i);
+ if(spread==='single') return `As your ${t.toLowerCase()}, this card asks you to center the reading on “${k0}” and let secondary concerns wait.`;
+ if(spread==='three') return i===0?`In the Past position, “${k0}” describes an influence that helped shape the present.`:i===1?`In the Present position, “${k0}” names the energy that most needs your attention now.`:`In the Future position, “${k0}” describes a likely theme if the current path continues. It is a direction, not a fixed fate.`;
+ const lines=[
+  `At the heart of the spread, “${k0}” defines the central condition.`,
+  `Crossing the center, “${k0}” is both the challenge and the key to movement.`,
+  `At the foundation, “${k0}” points to the deeper root beneath the situation.`,
+  `In the recent past, “${k0}” is fading but still influences the present.`,
+  `At the conscious goal, “${k0}” reflects what you believe you are trying to reach.`,
+  `In the near future, “${k0}” is likely to appear next.`,
+  `In the Self position, “${k0}” describes your current stance.`,
+  `In the Environment position, “${k0}” describes the pressure or support around you.`,
+  `In Hopes & Fears, “${k0}” shows what you both desire and worry about.`,
+  `In the Outcome position, “${k0}” describes the direction of the current energy, not an unavoidable verdict.`];
+ return lines[i];
 }
 function refreshReadingLanguage(){
   if(state.stage!=='reading'||!state.picks.length)return;
   const sp=SPREADS[state.spread];
-  $('#rdMeta').innerHTML=rdMetaHTML();
+  $('#rdMeta').innerHTML=`<span class="g">${dirLabel(state.dir)}</span><span>${spreadName(state.spread)} · ${sp.n} ${isZH()?'张':'cards'}</span>${state.question?`<span>${isZH()?'问题':'Question'}: ${escapeHTML(state.question).slice(0,96)}</span>`:''}<span>${localDate()}</span>`;
   $$('#board .poslb').forEach((lb,i)=>lb.innerHTML=`<i>${CIRC[i]}</i>${posName(state.spread,i)}`);
   const revealed=[...state.flipped].sort((a,b)=>a-b),hadSynth=$('#synth').classList.contains('show');
   $('#blocks').innerHTML=''; revealed.forEach(i=>appendBlock(i));
   if(hadSynth&&state.flipped.size===state.picks.length){$('#synth').classList.remove('show');$('#synBody').innerHTML='';$('#synAdvice').innerHTML='';$('#synBless').innerHTML='';buildSynth();}
 }
 function applyLanguage(){
-  const pk=P(),u=pk.ui;
-  document.documentElement.lang=state.lang==='zh'?'zh-CN':state.lang;
-  document.title=pk.meta.title;
-  const txt=(sel,key)=>{const el=$(sel);if(el)el.textContent=u[key];};
-  const html=(sel,key)=>{const el=$(sel);if(el)el.innerHTML=u[key];};
+  document.documentElement.lang=isZH()?'zh-CN':'en';
+  document.title=isZH()?'星垣 · 塔罗互动占卜':'Xingyuan · Interactive Tarot Reading';
+  const txt=(sel,en,zh)=>{const el=$(sel);if(el)el.textContent=isZH()?zh:en;};
+  const html=(sel,en,zh)=>{const el=$(sel);if(el)el.innerHTML=isZH()?zh:en;};
   const navs=$$('.navlink');
-  ['navHome','navStart','navSpreads','navDaily','navArchive','navAbout'].forEach((k,i)=>{if(navs[i])navs[i].textContent=u[k];});
-  html('#navTitle','<span class="st">✦</span>arcunara<span class="st">✦</span>');
-  txt('.howto h4','howtoTitle');
-  const li=$$('.howto li'); ['howto1','howto2','howto3','howto4'].forEach((k,i)=>{if(li[i])li[i].innerHTML=`<b>${i+1}.</b>${u[k]}`;});
-  txt('.dt1','dt1'); txt('.dt2','dt2');
-  txt('#heroTitle','heroTitle'); txt('#heroSub','heroSub');
-  const sc=$$('.sp-card'); if(sc[0]){sc[0].querySelector('.n').textContent=u.sp1n;sc[0].querySelector('.d').textContent=u.sp1d;}
-  if(sc[1]){sc[1].querySelector('.n').textContent=u.sp2n;sc[1].querySelector('.d').textContent=u.sp2d;}
-  if(sc[2]){sc[2].querySelector('.n').textContent=u.sp3n;sc[2].querySelector('.d').textContent=u.sp3d;}
-  html('.gt','gt');
-  html('#quote p','quote');
-  const dl=$$('#decoRow .lb');['deco1','deco2','deco3'].forEach((k,i)=>{if(dl[i])dl[i].textContent=u[k];});
-  const st=$$('#introSteps span'); ['step1','step2','step3'].forEach((k,i)=>{if(st[i])st[i].innerHTML=u[k];});
-  txt('#introGo','introGo'); txt('#revealBtn','revealBtn'); txt('#skipBtn','skipBtn'); txt('#exitRitual','exitRitual');
-  txt('#rdHead h2','rdTitle'); txt('#rdHintFlip','rdHintFlip');
-  txt('#synth h3','synthTitle'); txt('#aiPanel h3','aiTitle');
-  const acts=$$('#rdActions .act'); ['actAI','actCopy','actAgain','actHome'].forEach((k,i)=>{if(acts[i])acts[i].textContent=u[k];});
-  const mt=$$('.mtitle'); ['mtDaily','mtArchive','mtAbout','mtAI'].forEach((k,i)=>{if(mt[i])mt[i].textContent=u[k];});
-  txt('#arcBack','arcBack');
-  const about=$$('#mAbout .about-p'); if(about[0])about[0].innerHTML=u.about1;
-  if(about[1])about[1].textContent=u.about2;
-  if(about[2])about[2].textContent=u.about3;
-  /* 语言切换（下拉面板） */
-  const ls=$('#langSwitch');
-  if(ls&&!ls.childElementCount){
-    ls.innerHTML=`<button id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language"><span class="gl">✧</span><span id="langBtnLabel"></span><span class="caret">▾</span></button><div id="langPanel" role="listbox" aria-label="Language">${Object.keys(LANGS).map(k=>`<button type="button" role="option" data-lang="${k}" aria-selected="false"><span>${LANGS[k].full||LANGS[k].label}</span><span class="tick">✦</span></button>`).join('')}</div>`;
-  }
-  const lbl=$('#langBtnLabel'); if(lbl)lbl.textContent=LANGS[state.lang].label;
-  $$('#langPanel button').forEach(b=>{const on=b.dataset.lang===state.lang;b.classList.toggle('on',on);b.setAttribute('aria-selected',String(on));});
+  if(navs[0])navs[0].textContent=isZH()?'首页':'Home'; if(navs[1])navs[1].textContent=isZH()?'开始占卜':'Start Reading'; if(navs[2])navs[2].textContent=isZH()?'牌阵选择':'Spreads';
+  if(navs[3])navs[3].textContent=isZH()?'每日运势':'Daily Tarot'; if(navs[4])navs[4].textContent=isZH()?'塔罗档案':'Tarot Library'; if(navs[5])navs[5].textContent=isZH()?'关于':'About';
+  html('#navTitle','<span class="st">✦</span>Xingyuan Tarot<span class="st">✦</span>','<span class="st">✦</span>星垣塔罗<span class="st">✦</span>');
+  txt('.howto h4','How It Works ✦','玩法说明 ✦');
+  const li=$$('.howto li'); const enLi=['Select a spread','Choose a focus and optional question','Draw your cards','Read the overall insight, then details']; const zhLi=['选择牌阵','选择方向并可填写具体问题','抽取牌阵卡牌','先看整体结论，再展开逐牌解析']; li.forEach((x,i)=>x.innerHTML=`<b>${i+1}.</b>${isZH()?zhLi[i]:enLi[i]}`);
+  txt('.dt1',isZH()?'每日塔罗运势 ›':'Daily Tarot ›',isZH()?'每日塔罗运势 ›':'Daily Tarot ›');
+  txt('.dt2','Reveal today\'s card','点击查看今日运势');
+  txt('#heroTitle','Seek the Guidance Within','探寻命运的指引'); txt('#heroSub','A tarot ritual for reflection, clarity, and choice','与塔罗对话，开启内心的智慧之旅');
+  const sc=$$('.sp-card'); if(sc[0]){sc[0].querySelector('.n').textContent=isZH()?'单张指引':'Single Card';sc[0].querySelector('.d').textContent=isZH()?'获得简要指引':'A focused message';}
+  if(sc[1]){sc[1].querySelector('.n').textContent=isZH()?'三张牌阵':'Three Card';sc[1].querySelector('.d').textContent=isZH()?'过去 · 现在 · 未来':'Past · Present · Future';}
+  if(sc[2]){sc[2].querySelector('.n').textContent=isZH()?'凯尔特十字':'Celtic Cross';sc[2].querySelector('.d').textContent=isZH()?'深度全面解读':'A deeper, complete reading';}
+  html('.gt','Start Reading<b>✦</b>','开始占卜<b>✦</b>');
+  html('#quote p','Tarot does not dictate the future.<br>It illuminates the choices already within you.','塔罗并非预言未来，<br>而是照亮你内心选择的明灯。');
+  const dl=$$('#decoRow .lb');['Past','Present','Future'].forEach((v,i)=>{if(dl[i])dl[i].textContent=isZH()?['过去','现在','未来'][i]:v;});
+  const st=$$('#introSteps span'); const aEn=['<b>I</b>Choose a focus','<b>II</b>Add a question if you wish','<b>III</b>Shuffle and draw']; const aZh=['<b>壹</b>选择提问方向','<b>贰</b>可选填写具体问题','<b>叁</b>洗牌并抽牌']; st.forEach((x,i)=>x.innerHTML=isZH()?aZh[i]:aEn[i]);
+  txt('#introGo','Shuffle the Cards ✦','洗牌并抽牌 ✦'); txt('#revealBtn','Reveal the Reading','揭示天启'); txt('#skipBtn','Skip animation ›','跳过动画 ›'); txt('#exitRitual','✕ Exit reading','✕ 退出仪式');
+  txt('#rdHead h2',"✦ Selene's Reading ✦",'✦ 塞勒涅的启示 ✦'); txt('#rdHintFlip','The cards are revealing themselves… Tap a card to reveal it sooner','牌灵正在依序显形……亦可轻点牌面提前揭示');
+  txt('#synth h3','✦ Overall Reading ✦','✦ 整体解读 ✦'); txt('#aiPanel h3','◈ AI Insight · Deep Reading ◈','◈ AI 灵视 · 深度解读 ◈');
+  const acts=$$('#rdActions .act'); const ae=['Ask AI for a Deeper Reading','Copy Reading','Read Again','Back Home'],az=['召唤 AI 灵视','复制解读文本','再占一卦','回到首页'];acts.forEach((x,i)=>x.textContent=isZH()?az[i]:ae[i]);
+  const mt=$$('.mtitle'); if(mt[0])mt[0].textContent=isZH()?'每日塔罗运势':'Daily Tarot'; if(mt[1])mt[1].textContent=isZH()?'塔罗档案 · 78 张命运之书':'Tarot Library · 78 Cards'; if(mt[2])mt[2].textContent=isZH()?'关于星垣塔罗':'About Xingyuan Tarot'; if(mt[3])mt[3].textContent=isZH()?'连接 AI 灵视':'Connect AI Insight';
+  txt('#arcBack','‹ Back to deck','‹ 返回牌库');
+  const about=$$('#mAbout .about-p'); if(about[0])about[0].innerHTML=isZH()?'<b>星垣塔罗</b> 是一个专注于塔罗牌阅读的互动体验，用于自我觉察、理解模式与辅助做出更有意识的选择。':'<b>Xingyuan Tarot</b> is a focused tarot reading experience designed for reflection, pattern recognition, and intentional decision-making.';
+  if(about[1])about[1].textContent=isZH()?'系统使用完整 78 张塔罗牌，支持单张指引、三张牌阵和凯尔特十字。塔罗在这里被视为自我反思工具，而不是对未来的固定预言。':'The reading uses the 78-card tarot deck with Single Card, Three Card, and Celtic Cross spreads. Tarot is presented as a reflective tool rather than a fixed prediction of the future.';
+  if(about[2])about[2].textContent=isZH()?'内容仅用于个人反思与娱乐，不构成医疗、法律、金融或其他专业建议。':'For personal reflection and entertainment only. It is not medical, legal, financial, or other professional advice.';
+  $$('#langSwitch button').forEach(b=>{b.classList.toggle('on',b.dataset.lang===state.lang);b.setAttribute('aria-pressed',String(b.dataset.lang===state.lang));});
   const ql=$('#questionLabel'),qi=$('#questionInput'),qh=$('#questionHint');
-  if(ql)ql.textContent=u.questionLabel;
-  if(qi)qi.placeholder=u.questionPh;
-  if(qh)qh.textContent=u.questionHint;
-  const da=$$('#dailyActions .act'); if(da[0])da[0].textContent=u.dailySave; if(da[1])da[1].textContent=u.dailyShare;
-  txt('#journalTitle','journalTitle');
-  const as=$('#arcSearch'); if(as)as.placeholder=u.arcSearchPh;
-  const ao=$('#arcOrientation'); if(ao)ao.textContent=arcRev?u.reversed:u.upright;
-  txt('#aiStatus','aiStatus');
-  const dm=document.querySelector('meta[name="description"]');if(dm)dm.content=pk.meta.desc;
-  const ogt=document.querySelector('meta[property="og:title"]');if(ogt)ogt.content=pk.meta.title;
-  const ogd=document.querySelector('meta[property="og:description"]');if(ogd)ogd.content=pk.meta.ogDesc;
-  const ogl=document.querySelector('meta[property="og:locale"]');if(ogl)ogl.content=LANGS[state.lang].og;
-  const twt=document.querySelector('meta[name="twitter:title"]');if(twt)twt.content=pk.meta.title;
-  const twd=document.querySelector('meta[name="twitter:description"]');if(twd)twd.content=pk.meta.twDesc;
-  updateSoundButton();
+  if(ql)ql.textContent=isZH()?'你希望从什么问题中获得清晰指引？':'What would you like clarity on?';
+  if(qi)qi.placeholder=isZH()?'选填 — 描述你的具体问题':'Optional — describe your question';
+  if(qh)qh.textContent=isZH()?'选填 · 最多 500 字符':'Optional · 500 characters max';
+  const da=$$('#dailyActions .act'); if(da[0])da[0].textContent=isZH()?'保存到塔罗日记':'Save to Journal'; if(da[1])da[1].textContent=isZH()?'分享今日牌':'Share Today\'s Card';
+  txt('#journalTitle','Recent Journal','最近塔罗日记');
+  const as=$('#arcSearch'); if(as)as.placeholder=isZH()?'搜索牌名、关键词、主题…':'Search cards, keywords, themes…';
+  const ao=$('#arcOrientation'); if(ao)ao.textContent=arcRev?(isZH()?'逆位':'Reversed'):(isZH()?'正位':'Upright');
+  txt('#aiStatus','Powered through the site backend — no API key is stored in the browser.','AI 通过站点后端安全调用，浏览器不会保存 API Key。');
+  syncSoundUI();
+  const desc=isZH()?'星垣塔罗：支持 78 张塔罗牌、单张指引、三张牌阵、凯尔特十字、每日塔罗与可搜索牌库的双语互动塔罗体验。':'Xingyuan Tarot — an immersive 78-card tarot reading experience with Single Card, Three Card, Celtic Cross, Daily Tarot, and a searchable tarot library.';
+  const dm=document.querySelector('meta[name="description"]');if(dm)dm.content=desc;
+  const ogt=document.querySelector('meta[property="og:title"]');if(ogt)ogt.content=isZH()?'星垣塔罗 · 互动塔罗占卜':'Xingyuan Tarot · Interactive Tarot Reading';
+  const ogd=document.querySelector('meta[property="og:description"]');if(ogd)ogd.content=desc;
+  const ogl=document.querySelector('meta[property="og:locale"]');if(ogl)ogl.content=isZH()?'zh_CN':'en_US';
 
   buildDirs();
   if(state.stage==='intro'){
-    $('#introMeta').textContent=introMetaText();
+    $('#introMeta').textContent=isZH()?`当前牌阵：${spreadName(state.spread)} · ${SPREADS[state.spread].pos.map((p,i)=>posName(state.spread,i)).slice(0,3).join(' / ')}${SPREADS[state.spread].n>3?' …':''}（共 ${SPREADS[state.spread].n} 张）`:`Spread: ${spreadName(state.spread)} · ${SPREADS[state.spread].pos.map((p,i)=>posName(state.spread,i)).slice(0,3).join(' / ')}${SPREADS[state.spread].n>3?' …':''} (${SPREADS[state.spread].n} cards)`;
     $('#introLine').textContent=lineText('intro');
   }
   if(state.stage==='draw'){buildSlots();updateCount();$('#drawLine').textContent=state.picks.length===SPREADS[state.spread].n?lineText('drawDone'):lineText('draw',SPREADS[state.spread].n);}
   refreshReadingLanguage();
   if($('#mArchive').classList.contains('show'))buildArchive(); if($('#mDaily').classList.contains('show'))openDaily();
-}
-function introMetaText(){
-  const u=P().ui,sp=SPREADS[state.spread];
-  return fmt(u.introMeta,{spread:spreadName(state.spread),positions:sp.pos.map((p,i)=>posName(state.spread,i)).slice(0,3).join(' / '),more:sp.n>3?' …':'',n:sp.n});
 }
 
 /* ═══════════════════ 渲染层 ═══════════════════ */
@@ -1994,96 +1435,134 @@ function shuffleDeck(){
 function k0of(c,rev){ return (rev?c.kwr:c.kw).split('·')[0]; }
 
 /* ═══════════════════ 应用层 ═══════════════════ */
-const LANG_CODES=Object.keys(LANGS);
-function normLang(v){
-  if(!v)return null;
-  v=String(v).toLowerCase();
-  if(v.startsWith('zh'))return 'zh';
-  const base=v.split('-')[0];
-  return LANG_CODES.includes(base)?base:null;
-}
 function preferredLang(){
   try{
-    const q=normLang(new URLSearchParams(location.search).get('lang'));
-    if(q)return q;
-    const saved=normLang(localStorage.getItem('xy_lang'));
-    if(saved)return saved;
-    return normLang(navigator.language)||'en';
+    const q=new URLSearchParams(location.search).get('lang');
+    if(q==='zh'||q==='zh-CN')return 'zh';
+    if(q==='en')return 'en';
+    const saved=localStorage.getItem('xy_lang');
+    return saved==='zh'?'zh':'en';
   }catch(e){return 'en';}
 }
 function savePreferredLang(lang){
   try{
     localStorage.setItem('xy_lang',lang);
-    const u=new URL(location.href);u.searchParams.set('lang',lang==='zh'?'zh-CN':lang);
+    const u=new URL(location.href);u.searchParams.set('lang',lang==='zh'?'zh-CN':'en');
     history.replaceState(null,'',u);
   }catch(e){}
 }
-function switchLang(lang){
-  if(!LANG_CODES.includes(lang)||lang===state.lang)return;
-  ensurePack(lang).then(()=>{
-    state.lang=lang;savePreferredLang(lang);applyLanguage();
-  }).catch(()=>{});
-}
-function toggleLangPanel(){
-  const ls=$('#langSwitch');if(!ls)return;
-  const open=!ls.classList.contains('open');
-  ls.classList.toggle('open',open);
-  $('#langBtn')?.setAttribute('aria-expanded',String(open));
-}
-function closeLangPanel(){
-  const ls=$('#langSwitch');if(!ls||!ls.classList.contains('open'))return;
-  ls.classList.remove('open');
-  $('#langBtn')?.setAttribute('aria-expanded','false');
-}
 const state={stage:'home',spread:'three',dir:'all',lang:preferredLang(),question:'',ritual:[],picks:[],flipTimers:[],flipped:new Set(),burstDone:false};
 const V={v1:$('#v1'),v2:$('#v2'),v3:$('#v3')};
-const MOBILE_VIDEO_DISABLED = window.matchMedia('(max-width: 900px)').matches || window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 let vFailed={v1:false,v2:false,v3:false};
 
-/* ---- 音效（WebAudio 合成，无外部素材） ---- */
+/* ---- 神秘背景音乐 + 塔罗交互音效（WebAudio 合成，无外部素材） ---- */
 let AC=null;
-let sndOn=(()=>{
-  try{return localStorage.getItem('arcunara_sound')!=='off';}
-  catch(e){return true;}
-})();
-function soundIcon(on){
-  return on
-    ? `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path class="sound-wave" d="M16 8.2c1.8 2 1.8 5.6 0 7.6M18.8 5.5c3.4 3.6 3.4 9.4 0 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`
-    : `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4Z" fill="currentColor"/><path d="M16.2 9.2 21 14m0-4.8L16.2 14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>`;
+let sndOn=(()=>{try{return localStorage.getItem('xy_sound')!=='off';}catch(e){return true;}})();
+let sfxBus=null,ambientMaster=null,ambientFilter=null,ambientNodes=[],ambientTimer=null,ambientStep=0,ambientSession=0;
+
+function ac(){
+  if(!AC){
+    try{
+      AC=new (window.AudioContext||window.webkitAudioContext)();
+      sfxBus=AC.createGain();sfxBus.gain.value=.9;sfxBus.connect(AC.destination);
+    }catch(e){}
+  }
+  if(AC&&AC.state==='suspended')AC.resume().catch(()=>{});
+  return AC;
 }
-function updateSoundButton(){
+function saveSoundPref(){try{localStorage.setItem('xy_sound',sndOn?'on':'off');}catch(e){}}
+function syncSoundUI(){
   const b=$('#sndBtn');if(!b)return;
-  b.classList.toggle('off',!sndOn);
+  b.classList.toggle('off',!sndOn);b.classList.toggle('on',sndOn);
   b.setAttribute('aria-pressed',String(sndOn));
-  const u=P().ui;
-  const label=sndOn?u.soundOff:u.soundOn;
-  b.setAttribute('aria-label',label);
-  b.title=label;
-  b.innerHTML=soundIcon(sndOn);
+  b.title=isZH()?(sndOn?'关闭背景音乐与音效':'开启背景音乐与音效'):(sndOn?'Turn music & sound off':'Turn music & sound on');
+  b.setAttribute('aria-label',b.title);
 }
-function setSound(on,{announce=true}={}){
-  sndOn=!!on;
-  try{localStorage.setItem('arcunara_sound',sndOn?'on':'off');}catch(e){}
-  updateSoundButton();
-  if(announce)toast(sndOn?P().ui.soundOnToast:P().ui.soundOffToast);
-}
-function ac(){ if(!AC){try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(e){}} if(AC&&AC.state==='suspended'){try{const r=AC.resume();if(r&&typeof r.catch==='function')r.catch(()=>{});}catch(e){}} return AC; }
-function tone(freq,dur=0.5,delay=0,vol=0.16,type='sine'){
-  const ctx=ac(); if(!ctx||!sndOn)return;
+function tone(freq,dur=.5,delay=0,vol=.12,type='sine',detune=0){
+  const ctx=ac();if(!ctx||!sndOn)return;
   const o=ctx.createOscillator(),g=ctx.createGain();
-  o.type=type;o.frequency.value=freq;o.connect(g);g.connect(ctx.destination);
+  o.type=type;o.frequency.value=freq;o.detune.value=detune;o.connect(g);g.connect(sfxBus||ctx.destination);
   const t=ctx.currentTime+delay;
-  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+0.02);
-  g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
-  o.start(t);o.stop(t+dur+0.05);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(Math.max(.0002,vol),t+.015);
+  g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  o.start(t);o.stop(t+dur+.04);
+}
+function noiseSweep(dur=.5,vol=.035,from=2200,to=420){
+  const ctx=ac();if(!ctx||!sndOn)return;
+  const len=Math.max(1,Math.floor(ctx.sampleRate*dur)),buf=ctx.createBuffer(1,len,ctx.sampleRate),data=buf.getChannelData(0);
+  for(let i=0;i<len;i++)data[i]=(Math.random()*2-1)*(1-i/len);
+  const src=ctx.createBufferSource(),filter=ctx.createBiquadFilter(),g=ctx.createGain();
+  src.buffer=buf;filter.type='bandpass';filter.Q.value=.7;
+  const t=ctx.currentTime;filter.frequency.setValueAtTime(from,t);filter.frequency.exponentialRampToValueAtTime(Math.max(80,to),t+dur);
+  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.025);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  src.connect(filter);filter.connect(g);g.connect(sfxBus||ctx.destination);src.start(t);src.stop(t+dur+.02);
+}
+function ambientBell(freq){
+  const ctx=AC;if(!ctx||!sndOn||!ambientMaster)return;
+  const t=ctx.currentTime;
+  [1,2.01,3.02].forEach((mul,i)=>{
+    const o=ctx.createOscillator(),g=ctx.createGain();o.type=i?'sine':'triangle';o.frequency.value=freq*mul;
+    g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(i?0.004:0.009,t+.025);g.gain.exponentialRampToValueAtTime(.0001,t+3.8+i*.55);
+    o.connect(g);g.connect(ambientFilter);o.start(t);o.stop(t+4.6+i*.55);
+  });
+}
+function startAmbient(){
+  if(!sndOn)return;
+  const ctx=ac();if(!ctx||ambientNodes.length)return;
+  const session=++ambientSession;
+  ambientMaster=ctx.createGain();ambientMaster.gain.setValueAtTime(.0001,ctx.currentTime);ambientMaster.gain.exponentialRampToValueAtTime(.055,ctx.currentTime+1.8);ambientMaster.connect(ctx.destination);
+  ambientFilter=ctx.createBiquadFilter();ambientFilter.type='lowpass';ambientFilter.frequency.value=880;ambientFilter.Q.value=.5;ambientFilter.connect(ambientMaster);
+
+  /* D-minor/A suspended drone: deliberately quiet so card SFX stay clear. */
+  [[73.42,'sine',.020,-4],[110,'triangle',.010,3],[146.83,'sine',.009,-2],[174.61,'sine',.007,4]].forEach(([f,type,v,det])=>{
+    const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=f;o.detune.value=det;g.gain.value=v;o.connect(g);g.connect(ambientFilter);o.start();ambientNodes.push(o,g);
+  });
+  const lfo=ctx.createOscillator(),lg=ctx.createGain();lfo.type='sine';lfo.frequency.value=.065;lg.gain.value=.010;lfo.connect(lg);lg.connect(ambientMaster.gain);lfo.start();ambientNodes.push(lfo,lg);
+
+  /* Soft filtered air/noise gives the music a ritual-space texture. */
+  const seconds=2,buf=ctx.createBuffer(1,ctx.sampleRate*seconds,ctx.sampleRate),d=buf.getChannelData(0);
+  for(let i=0;i<d.length;i++){const x=Math.random()*2-1;d[i]=x*.22;}
+  const ns=ctx.createBufferSource(),nf=ctx.createBiquadFilter(),ng=ctx.createGain();ns.buffer=buf;ns.loop=true;nf.type='lowpass';nf.frequency.value=480;ng.gain.value=.008;ns.connect(nf);nf.connect(ng);ng.connect(ambientFilter);ns.start();ambientNodes.push(ns,nf,ng);
+
+  const bells=[293.66,349.23,440,392,329.63,293.66];ambientStep=0;
+  ambientTimer=setInterval(()=>{if(session!==ambientSession||!sndOn)return;ambientBell(bells[(ambientStep++)%bells.length]);},7600);
+  setTimeout(()=>{if(session===ambientSession&&sndOn)ambientBell(293.66);},900);
+}
+function stopAmbient(){
+  ++ambientSession;
+  if(ambientTimer){clearInterval(ambientTimer);ambientTimer=null;}
+  const ctx=AC,master=ambientMaster,nodes=ambientNodes.slice();ambientNodes=[];ambientMaster=null;ambientFilter=null;
+  if(ctx&&master){
+    const t=ctx.currentTime;try{master.gain.cancelScheduledValues(t);master.gain.setValueAtTime(Math.max(master.gain.value,.0001),t);master.gain.exponentialRampToValueAtTime(.0001,t+.55);}catch(e){}
+    setTimeout(()=>{nodes.forEach(n=>{try{if(typeof n.stop==='function')n.stop();}catch(e){}try{if(typeof n.disconnect==='function')n.disconnect();}catch(e){}});try{master.disconnect();}catch(e){}},650);
+  }
 }
 const sfx={
-  pick(){tone(880,.35,0,.12);tone(1318,.4,.06,.08);},
-  flip(){tone(523,.6,0,.12);tone(784,.7,.1,.1);tone(1046,.8,.2,.06);},
-  gate(){tone(196,1.4,0,.14,'triangle');tone(392,1.2,.15,.1);tone(587,1.1,.3,.08);},
-  soft(){tone(659,.4,0,.08);}
+  select(){tone(739.99,.22,0,.065,'sine');tone(1108.73,.3,.045,.045,'sine');},
+  focus(){tone(587.33,.2,0,.045,'sine');tone(880,.24,.04,.032,'triangle');},
+  shuffle(){noiseSweep(.82,.05,2600,260);tone(146.83,.9,0,.05,'triangle');tone(293.66,.72,.16,.035,'sine');},
+  draw(){noiseSweep(.34,.042,1800,520);tone(987.77,.26,.08,.07,'sine');tone(1318.51,.3,.13,.035,'sine');},
+  returnCard(){tone(783.99,.18,0,.045,'sine');tone(523.25,.28,.045,.04,'sine');},
+  flip(){noiseSweep(.24,.025,1100,360);tone(523.25,.55,.02,.075,'sine');tone(783.99,.62,.09,.055,'sine');tone(1046.5,.72,.16,.03,'sine');},
+  gate(){tone(196,1.35,0,.09,'triangle');tone(392,1.15,.14,.055,'sine');tone(587.33,1.05,.27,.038,'sine');},
+  soft(){tone(659.25,.32,0,.04,'sine');}
 };
-$('#sndBtn')?.addEventListener('click',()=>setSound(!sndOn));
+function toggleSound(){
+  sndOn=!sndOn;saveSoundPref();
+  if(sndOn)startAmbient();else stopAmbient();
+  syncSoundUI();
+  toast(isZH()?(sndOn?'神秘音乐与音效已开启 ♫':'背景音乐与音效已关闭'):(sndOn?'Mystic music & sound on ♫':'Music & sound muted'));
+}
+$('#sndBtn').addEventListener('click',e=>{e.stopPropagation();toggleSound();});
+/* Browsers require a gesture before audio can begin. Start ambience on the first real interaction. */
+document.addEventListener('pointerdown',()=>{if(sndOn)startAmbient();},{once:true,capture:true});
+document.addEventListener('keydown',()=>{if(sndOn)startAmbient();},{once:true,capture:true});
+document.addEventListener('visibilitychange',()=>{
+  if(!AC)return;
+  if(document.hidden&&AC.state==='running')AC.suspend().catch(()=>{});
+  else if(!document.hidden&&sndOn){AC.resume().then(()=>startAmbient()).catch(()=>{});}
+});
+syncSoundUI();
 
 /* ---- 视频调度 ---- */
 Object.entries(V).forEach(([k,v])=>{
@@ -2094,38 +1573,11 @@ Object.entries(V).forEach(([k,v])=>{
     if(r<0.5)v.classList.add('dip'); else if(v.currentTime<0.6)v.classList.remove('dip');
   });
 });
-function safeVideoReset(v){
-  if(!v)return;
-  try{
-    if(v.readyState>0){v.currentTime=0;return;}
-    v.addEventListener('loadedmetadata',()=>{try{v.currentTime=0;}catch(e){}},{once:true});
-  }catch(e){}
-}
-function safeVideoLoad(v){if(!v)return;try{v.load();}catch(e){}}
 function playV(key){
-  if(MOBILE_VIDEO_DISABLED){
-    Object.values(V).forEach(v=>{
-      v.classList.remove('on','dip');
-      try{v.pause();}catch(e){}
-    });
-    return Promise.resolve(false);
-  }
-  let target=Promise.resolve(false);
   Object.entries(V).forEach(([k,v])=>{
-    if(k===key){
-      v.classList.add('on');
-      try{
-        const p=v.play();
-        target=(p&&typeof p.then==='function')
-          ? p.then(()=>true).catch(()=>{vFailed[k]=true;v.classList.remove('on');return false;})
-          : Promise.resolve(true);
-      }catch(e){vFailed[k]=true;v.classList.remove('on');target=Promise.resolve(false);}
-    }else{
-      v.classList.remove('on');
-      try{v.pause();}catch(e){}
-    }
+    if(k===key){ v.classList.add('on'); const p=v.play(); if(p)p.catch(()=>{}); }
+    else { v.classList.remove('on'); v.pause(); }
   });
-  return target;
 }
 V.v1.loop=true; V.v2.loop=true; V.v3.loop=false;
 V.v1.addEventListener('canplaythrough',()=>{ if(V.v2.preload!=='auto'){V.v2.preload='auto';V.v2.load();} },{once:true});
@@ -2150,16 +1602,16 @@ function setStage(s){ state.stage=s; document.body.dataset.stage=s; }
 
 function toIntro(){
   if(state.stage!=='home')return;
-  sfx.gate(); setStage('intro'); V.v1.preload='metadata'; safeVideoReset(V.v1); playV('v1');
-  $('#introMeta').textContent=introMetaText();
+  sfx.gate(); setStage('intro'); V.v1.preload='metadata'; V.v1.currentTime=0; playV('v1');
+  $('#introMeta').textContent=isZH()?`当前牌阵：${spreadName(state.spread)} · ${SPREADS[state.spread].pos.map((p,i)=>posName(state.spread,i)).slice(0,3).join(' / ')}${SPREADS[state.spread].n>3?' …':''}（共 ${SPREADS[state.spread].n} 张）`:`Spread: ${spreadName(state.spread)} · ${SPREADS[state.spread].pos.map((p,i)=>posName(state.spread,i)).slice(0,3).join(' / ')}${SPREADS[state.spread].n>3?' …':''} (${SPREADS[state.spread].n} cards)`;
   typewriter($('#introLine'),lineText('intro'),60);
 }
 
 function toDraw(){
   if(state.stage!=='intro')return;
-  sfx.soft(); setStage('draw');
-  V.v3.preload='auto';safeVideoLoad(V.v3);
-  safeVideoReset(V.v2); playV('v2');
+  sfx.shuffle(); setStage('draw');
+  V.v3.preload='auto';V.v3.load();
+  V.v2.currentTime=0; playV('v2');
   state.ritual=shuffleDeck(); state.picks=[];
   buildFan(); buildSlots(); updateCount();
   $('#revealBtn').classList.remove('on');
@@ -2171,8 +1623,7 @@ function toBurst(){
   sfx.gate(); state.burstDone=false; setStage('burst');
   typewriter($('#burstLine'),lineText('burst'),70);
   if(vFailed.v3){ setTimeout(finishBurst,1400); return; }
-  safeVideoReset(V.v3);
-  playV('v3').then(ok=>{if(!ok&&!state.burstDone)setTimeout(finishBurst,250);});
+  V.v3.currentTime=0; playV('v3');
   V.v3.onended=finishBurst;
   setTimeout(()=>{ if(!state.burstDone && V.v3.paused) finishBurst(); },6000); /* 兜底 */
 }
@@ -2202,7 +1653,7 @@ function buildFan(){
   pool.forEach((it,i)=>{
     const d=document.createElement('div');
     d.className='fc'; d.dataset.i=state.ritual.indexOf(it);
-    d.setAttribute('role','button');d.setAttribute('tabindex','0');d.setAttribute('aria-label',fmt(P().ui.chooseCard,{n:i+1}));
+    d.setAttribute('role','button');d.setAttribute('tabindex','0');d.setAttribute('aria-label',isZH()?`选择第 ${i+1} 张牌`:`Choose card ${i+1}`);
     d.style.left=(span*i/Math.max(N-1,1))+'px';
     const rot=mobile?(-9+18*i/Math.max(N-1,1)):(-16+32*i/Math.max(N-1,1));
     const lift=Math.sin(Math.PI*i/Math.max(N-1,1))*(mobile?18:34);
@@ -2225,13 +1676,13 @@ function buildSlots(){
 function refreshSlots(){
   $$('#slotRow .slot').forEach((s,i)=>{
     const fr=s.querySelector('.s-fr');
-    if(state.picks[i]){ s.classList.add('filled'); fr.innerHTML=`<div class="cb" style="width:100%;height:100%;border-radius:5px">${backSVG()}</div>`; fr.title=P().ui.slotReturn; }
+    if(state.picks[i]){ s.classList.add('filled'); fr.innerHTML=`<div class="cb" style="width:100%;height:100%;border-radius:5px">${backSVG()}</div>`; fr.title=isZH()?'点击放回此牌':'Click to return this card'; }
     else { s.classList.remove('filled'); fr.innerHTML=`<span class="s-n">${i+1}</span>`; fr.title=''; }
   });
 }
 function updateCount(){
   const n=SPREADS[state.spread].n;
-  $('#drawCount').innerHTML=fmt(P().ui.drawCount,{sel:state.picks.length,n});
+  $('#drawCount').innerHTML=isZH()?`凭直觉抽取 · 已选 <b>${state.picks.length}</b> ／ ${n}`:`Draw by instinct · Selected <b>${state.picks.length}</b> / ${n}`;
   const full=state.picks.length===n;
   $('#revealBtn').classList.toggle('on',full);
   if(full)typewriter($('#drawLine'),lineText('drawDone'),45);
@@ -2241,7 +1692,7 @@ function pickCard(i){
   if(state.picks.length>=n)return;
   const el=$(`.fc[data-i="${i}"]`);
   if(!el||el.classList.contains('picked'))return;
-  el.classList.add('picked'); sfx.pick();
+  el.classList.add('picked'); sfx.draw();
   const it=state.ritual[i];
   state.picks.push({...it.card, rev:it.rev, fanIdx:i});
   refreshSlots(); updateCount();
@@ -2249,7 +1700,7 @@ function pickCard(i){
 function unpickSlot(si){
   const p=state.picks[si]; if(!p)return;
   const el=$(`.fc[data-i="${p.fanIdx}"]`); if(el)el.classList.remove('picked');
-  state.picks.splice(si,1); sfx.soft();
+  state.picks.splice(si,1); sfx.returnCard();
   refreshSlots(); updateCount();
 }
 
@@ -2294,18 +1745,19 @@ function cardDetail(p){
     const act=`行动提示：${SUIT_ACT[p.arcana==='major'?'major':p.arcana]}；${p.rev?'先清理内在的阻滞，再缓步向前。':(neg?'正视它、命名它，然后温柔而果断地处理它。':'能量顺畅，宜尽快落子。')}`;
     return {cor,dir,act};
   }
-  const k0=k0Local(p,p.rev),k1=k1Local(p,p.rev),D=P().detail;
-  const cor=p.arcana==='major'?fmt(D.corMajor,{roman:p.roman}):fmt(D.corMinor,{suit:P().suits[p.arcana].name,element:P().suits[p.arcana].element});
-  const dir=fmt(D.dir,{ctx:D.ctx[state.dir],k0,k1});
-  const action=D.actions[p.arcana==='major'?'major':p.arcana];
-  const act=fmt(D.actTpl,{action,tail:p.rev?D.actRev:D.actFwd});
+  const k0=k0Local(p,p.rev),k1=k1Local(p,p.rev);
+  const cor=p.arcana==='major'?`Major Arcana ${p.roman}`:`Minor Arcana · ${EN_SUIT[p.arcana].name} · ${EN_SUIT[p.arcana].element}`;
+  const ctx={all:'Across the whole situation',love:'In love and relationships',career:'In career or study',wealth:'For money and opportunity',health:'For well-being'}[state.dir];
+  const dir=`${ctx}, “${k0}” is the key theme. Let “${k1}” shape your next choice without treating the card as a fixed prediction.`;
+  const action={wands:'take one concrete action',cups:'have one honest conversation or listening moment',swords:'make one clear decision',pents:'strengthen one practical habit',major:'treat the message as a major reflection point'}[p.arcana==='major'?'major':p.arcana];
+  const act=`Action: ${action}; ${p.rev?'clear the blockage before pushing forward.':'translate the insight into a specific next step.'}`;
   return {cor,dir,act};
 }
 function toReading(){
   setStage('reading');
   V.v1.pause();V.v2.pause();
   const sp=SPREADS[state.spread];
-  $('#rdMeta').innerHTML=rdMetaHTML();
+  $('#rdMeta').innerHTML=`<span class="g">${dirLabel(state.dir)}</span><span>${spreadName(state.spread)} · ${sp.n} ${isZH()?'张':'cards'}</span>${state.question?`<span>${isZH()?'问题':'Question'}: ${escapeHTML(state.question).slice(0,96)}</span>`:''}<span>${localDate()}</span>`;
   /* 牌桌 */
   const bd=$('#board'); bd.innerHTML='';
   const box=document.createElement('div');
@@ -2344,8 +1796,8 @@ function flipCard(i){
 }
 function appendBlock(i){
   const p=state.picks[i];
-  const kws=cardKeywords(p,p.rev), mean=cardMeaning(p,p.rev), k0=k0Local(p,p.rev);
-  const d=cardDetail(p), name=cardName(p), secondary=isLatin()?'':`<i>${p.en}</i>`;
+  const kws=cardKeywords(p,p.rev), mean=cardMeaning(p,p.rev), k0=isZH()?k0of(p,p.rev):k0Local(p,p.rev);
+  const d=cardDetail(p), name=cardName(p), secondary=isZH()?`<i>${p.en}</i>`:'';
   const b=document.createElement('details'); b.className='ib pnl';
   if(state.picks.length===1)b.open=true;
   b.innerHTML=`<summary>
@@ -2357,7 +1809,7 @@ function appendBlock(i){
       <div class="ib-kw">✦ ${kws.split('·').map(x=>x.trim()).join(' · ')}</div>
       <div class="ib-cor">◈ ${d.cor}</div>
       <p>${mean}</p>
-      <p class="fit">${leadText(state.spread,i,k0)} <span style="color:var(--ink-dim);opacity:.75">${fmt(P().ui.positionHint,{d:posDesc(state.spread,i)})}</span></p>
+      <p class="fit">${leadText(state.spread,i,k0)} <span style="color:var(--ink-dim);opacity:.75">${isZH()?`（此位含义：${posDesc(state.spread,i)}）`:`(Position: ${posDesc(state.spread,i)})`}</span></p>
       <p class="ib-dir">${d.dir}</p>
       <div class="ib-act">✧ ${d.act}</div>
     </div>`;
@@ -2372,27 +1824,34 @@ function buildSynth(){
   const revs=state.picks.filter(p=>p.rev).length;
   const tally={wands:0,cups:0,swords:0,pents:0};state.picks.forEach(p=>{if(tally[p.arcana]!==undefined)tally[p.arcana]++;});
   let domSuit=null,domN=0;Object.entries(tally).forEach(([k,v])=>{if(v>domN){domSuit=k;domN=v;}});
-  const outcome=state.picks[n-1], ok=k0Local(outcome,outcome.rev);
+  const outcome=state.picks[n-1], ok=isZH()?k0of(outcome,outcome.rev):k0Local(outcome,outcome.rev);
   const q=state.question.trim();
-  const S=P().synth,u=P().ui,cn=c=>cardName(c);
-  const suitN=domSuit?(isZH()?SUITS[domSuit].cn:P().suits[domSuit].name):'';
-  const suitT=domSuit?(isZH()?SUITS[domSuit].theme:P().suits[domSuit].theme):'';
 
   let overall,ins1,ins2,ins3,bless;
-  overall=fmt(S.overall,{spread:spreadName(state.spread),ok,q:q?fmt(S.overallQ,{q}):'',tail:(revs>=Math.ceil(n/2)&&n>1)?S.tailReflect:S.tailClear});
-  ins1=majors>=Math.ceil(n/2)?S.insMajor:domSuit?fmt(S.insSuit,{suit:suitN,theme:suitT}):S.insBal;
-  if(state.spread==='three')ins2=fmt(S.insThree,{c0:cn(state.picks[0]),c1:cn(state.picks[1]),c2:cn(state.picks[2])});
-  else if(state.spread==='celtic')ins2=fmt(S.insCeltic,{c0:cn(state.picks[0]),c1:cn(state.picks[1]),c9:cn(state.picks[9])});
-  else ins2=fmt(S.insSingle,{ok});
-  ins3=fmt(outcome.rev?S.actRev:S.actFwd,{ok});
-  bless=S.bless;
+  if(isZH()){
+    overall=`这次「${spreadName(state.spread)}」的核心落在「${ok}」。${q?`围绕你的问题“${q}”，`:''}${revs>=Math.ceil(n/2)&&n>1?'牌面更强调先梳理阻力、情绪与未完成事项，再向外推进。':'牌面给出的方向相对清晰，重点是把洞见转成一个可执行的选择。'}`;
+    ins1=majors>=Math.ceil(n/2)?`大阿尔卡那占比较高，说明这更像一个阶段性人生课题，而非单一的小问题。`:domSuit?`${SUITS[domSuit].cn}能量较突出，重点关注${SUITS[domSuit].theme}。`:`牌面元素较均衡，需要同时兼顾内在感受与现实行动。`;
+    if(state.spread==='three')ins2=`故事从「${state.picks[0].cn}」走向「${state.picks[1].cn}」，并流向「${state.picks[2].cn}」。未来牌描述的是当前路径的趋势，不是固定结局。`;
+    else if(state.spread==='celtic')ins2=`十字中心的「${state.picks[0].cn}」与挑战位「${state.picks[1].cn}」构成主要张力，而结果位「${state.picks[9].cn}」提示当前能量最可能流向的方向。`;
+    else ins2=`单张牌将信息集中在一个主题上：先围绕「${ok}」做判断，暂时减少次要变量。`;
+    ins3=outcome.rev?`行动建议：先处理「${ok}」背后的卡点，再做下一步；七天内完成一个能够验证变化的小行动。`:`行动建议：以「${ok}」作为近期决策过滤器，并在七天内落实一个具体动作。`;
+    bless='塔罗用于照见模式与选择，而不是替你决定未来。';
+  }else{
+    overall=`The center of this ${spreadName(state.spread)} is “${ok}.” ${q?`For your question “${q},” `:''}${revs>=Math.ceil(n/2)&&n>1?'the cards favor reflection, correction, and clearing unfinished pressure before acceleration.':'the message is comparatively direct: turn the insight into one observable choice.'}`;
+    ins1=majors>=Math.ceil(n/2)?`Major Arcana are prominent, suggesting a broader life lesson rather than a narrow tactical issue.`:domSuit?`${EN_SUIT[domSuit].name} is the strongest suit, emphasizing ${EN_SUIT[domSuit].theme}.`:`The elemental mix is balanced, so both inner awareness and practical action matter.`;
+    if(state.spread==='three')ins2=`The story moves from ${state.picks[0].en}, through ${state.picks[1].en}, toward ${state.picks[2].en}. The Future position is a direction of travel, not a fixed verdict.`;
+    else if(state.spread==='celtic')ins2=`The central tension is ${state.picks[0].en} crossed by ${state.picks[1].en}; the current path ultimately points toward ${state.picks[9].en}.`;
+    else ins2=`The single card keeps the reading focused: let “${ok}” guide the decision before adding secondary concerns.`;
+    ins3=outcome.rev?`Action: clear the blockage around “${ok}” first, then take one small step within seven days that proves the situation is moving.`:`Action: use “${ok}” as a near-term decision filter and take one concrete step within seven days.`;
+    bless='Tarot can illuminate patterns and choices; it does not make the future fixed.';
+  }
 
   const syn=$('#synth');syn.classList.add('show');sfx.soft();
-  $('#synBody').innerHTML=`<div class="overall-label">${u.overallLabel}</div><p>${escapeHTML(overall)}</p>`;
+  $('#synBody').innerHTML=`<div class="overall-label">${isZH()?'整体结论':'Overall'}</div><p>${escapeHTML(overall)}</p>`;
   $('#synAdvice').innerHTML=[
-    [u.energyLabel,ins1],
-    [u.storyLabel,ins2],
-    [u.nextLabel,ins3]
+    [isZH()?'能量模式':'Energy Pattern',ins1],
+    [isZH()?'牌阵故事':'Spread Story',ins2],
+    [isZH()?'下一步':'Next Step',ins3]
   ].map(([h,t])=>`<div class="insight"><b>${h}</b><p>${escapeHTML(t)}</p></div>`).join('');
   $('#synBless').textContent=bless;
   state.synText={paras:[overall],adv:[ins1,ins2,ins3]};
@@ -2401,23 +1860,23 @@ function buildSynthEn(){buildSynth();}
 
 /* ---- 复制解读 ---- */
 function copyReading(){
-  const u=P().ui; let t='';
-  if(isZH()) t=`【arcunara · 塔罗互动占卜】\n方向：${dirLabel(state.dir)} ｜ 牌阵：${spreadName(state.spread)} ｜ ${new Date().toLocaleDateString('zh-CN')}${state.question?`\n问题：${state.question}`:''}\n\n`;
-  else t=`【arcunara · Tarot Reading】\n${dirLabel(state.dir)} | ${spreadName(state.spread)} | ${new Date().toLocaleDateString(P().locale)}${state.question?`\n${u.questionShort}: ${state.question}`:''}\n\n`;
-  state.picks.forEach((p,i)=>{const d=cardDetail(p); if(isZH()) t+=`${CIRC[i]} ${posName(state.spread,i)}｜${p.cn} ${p.en}（${oriText(p.rev)}）\n${u.kwLabel}：${cardKeywords(p,p.rev)}\n${u.corLabel}：${d.cor}\n${cardMeaning(p,p.rev)}\n${d.dir}\n✧ ${d.act}\n\n`; else t+=`${CIRC[i]} ${posName(state.spread,i)} | ${cardName(p)} (${oriText(p.rev)})\n${u.kwLabel}: ${cardKeywords(p,p.rev)}\n${u.corLabel}: ${d.cor}\n${cardMeaning(p,p.rev)}\n${d.dir}\n✧ ${d.act}\n\n`;});
-  if(state.synText)t+=u.copySynth+'\n'+state.synText.paras.join('\n')+'\n'+state.synText.adv.join('\n')+'\n';
-  t+='\n'+u.copyFooter;
-  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast(u.copyToast),()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast(u.copyToast);}catch(e){toast(u.copyFailToast);}ta.remove();});
+  const sp=SPREADS[state.spread]; let t='';
+  if(isZH()) t=`【星垣 · 塔罗互动占卜】\n方向：${dirLabel(state.dir)} ｜ 牌阵：${spreadName(state.spread)} ｜ ${new Date().toLocaleDateString('zh-CN')}${state.question?`\n问题：${state.question}`:''}\n\n`;
+  else t=`【Xingyuan · Tarot Reading】\nFocus: ${dirLabel(state.dir)} | Spread: ${spreadName(state.spread)} | ${new Date().toLocaleDateString('en-US')}${state.question?`\nQuestion: ${state.question}`:''}\n\n`;
+  state.picks.forEach((p,i)=>{const d=cardDetail(p); if(isZH()) t+=`${CIRC[i]} ${posName(state.spread,i)}｜${p.cn} ${p.en}（${oriText(p.rev)}）\n关键词：${cardKeywords(p,p.rev)}\n对应：${d.cor}\n${cardMeaning(p,p.rev)}\n${d.dir}\n✧ ${d.act}\n\n`; else t+=`${CIRC[i]} ${posName(state.spread,i)} | ${p.en} (${oriText(p.rev)})\nKeywords: ${cardKeywords(p,p.rev)}\nCorrespondence: ${d.cor}\n${cardMeaning(p,p.rev)}\n${d.dir}\n✧ ${d.act}\n\n`;});
+  if(state.synText)t+=(isZH()?'—— 综合启示 ——\n':'—— Synthesis ——\n')+state.synText.paras.join('\n')+'\n'+state.synText.adv.join('\n')+'\n';
+  t+=isZH()?'\n✦ 塔罗并非预言未来，而是照亮你内心选择的明灯。':'\n✦ Tarot is a reflective tool, not a fixed prediction of the future.';
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast(isZH()?'解读文本已复制 ✦':'Reading copied ✦'),()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast(isZH()?'解读文本已复制 ✦':'Reading copied ✦');}catch(e){toast(isZH()?'复制失败，请手动截屏保存':'Copy failed. Please save a screenshot instead.');}ta.remove();});
 }
 
 /* ---- AI 灵视：仅调用站点后端代理，不在浏览器保存第三方 API Key ---- */
 const AI_PROXY_ENDPOINT='/api/tarot/reading';
 async function summonAI(){
   const panel=$('#aiPanel'),body=$('#aiBody');
-  panel.classList.add('show'); body.classList.add('loading'); body.textContent=P().ui.aiLoading;
+  panel.classList.add('show'); body.classList.add('loading'); body.textContent=isZH()?'塞勒涅正在整理牌阵脉络……':'Selene is reading the pattern…';
   panel.scrollIntoView({behavior:'smooth',block:'nearest'});
   const payload={
-    language:P().locale,
+    language:isZH()?'zh-CN':'en',
     question:state.question||'',
     focus:state.dir,
     focusLabel:dirLabel(state.dir),
@@ -2437,7 +1896,9 @@ async function summonAI(){
     body.classList.remove('loading');typewriter(body,txt,14);
   }catch(e){
     body.classList.remove('loading');
-    body.textContent=P().ui.aiNotConfigured;
+    body.textContent=isZH()
+      ?'AI 深度解读尚未在当前部署环境配置。请在服务器实现 POST /api/tarot/reading，并由服务器安全保存第三方模型密钥。'
+      :'AI Insight is not configured on this deployment yet. Implement POST /api/tarot/reading on the server and keep the model provider key server-side.';
   }
 }
 
@@ -2460,43 +1921,42 @@ function dailyPayload(){
 function renderJournal(){
   const box=$('#journalList');if(!box)return;
   const items=loadJournal().slice(0,5);
-  box.innerHTML=items.length?items.map(x=>`<div class="journal-item"><b>${escapeHTML(x.date)} · ${escapeHTML(x.card)}</b><br>${escapeHTML(x.orientation)} · ${escapeHTML(x.keywords)}</div>`).join(''):`<div class="journal-item">${P().ui.journalEmpty}</div>`;
+  box.innerHTML=items.length?items.map(x=>`<div class="journal-item"><b>${escapeHTML(x.date)} · ${escapeHTML(x.card)}</b><br>${escapeHTML(x.orientation)} · ${escapeHTML(x.keywords)}</div>`).join(''):`<div class="journal-item">${isZH()?'还没有保存的每日牌。':'No saved daily cards yet.'}</div>`;
 }
 function saveDaily(){
   const x=dailyPayload(),items=loadJournal();
   const next=[x,...items.filter(i=>i.date!==x.date)];saveJournal(next);renderJournal();
-  toast(P().ui.savedToast);
+  toast(isZH()?'已保存到塔罗日记 ✦':'Saved to your tarot journal ✦');
 }
 async function shareDaily(){
-  const x=dailyPayload(),u=P().ui;
-  const text=isZH()?`今日塔罗：${x.card}（${x.orientation==='reversed'?'逆位':'正位'}）\n${x.keywords}\n${x.meaning}`:`${x.card} (${x.orientation})\n${x.keywords}\n${x.meaning}`;
+  const x=dailyPayload();
+  const text=isZH()?`今日塔罗：${x.card}（${x.orientation==='reversed'?'逆位':'正位'}）\n${x.keywords}\n${x.meaning}`:`Daily Tarot: ${x.card} (${x.orientation})\n${x.keywords}\n${x.meaning}`;
   try{
-    if(navigator.share)await navigator.share({title:'arcunara · Daily Tarot',text});
+    if(navigator.share)await navigator.share({title:'Xingyuan Tarot · Daily Tarot',text});
     else if(navigator.clipboard)await navigator.clipboard.writeText(text);
     else throw new Error('share unavailable');
-    toast(u.shareToast);
-  }catch(e){if(e&&e.name!=='AbortError')toast(u.shareFailToast);}
+    toast(isZH()?'今日牌已分享 ✦':'Daily card ready to share ✦');
+  }catch(e){if(e&&e.name!=='AbortError')toast(isZH()?'无法调用分享，请复制内容':'Sharing is unavailable on this browser');}
 }
 function openDaily(){
   const {c,rev}=dailyCard(); const kws=cardKeywords(c,rev).split('·').map(x=>x.trim());
   const box=$('#dailyBox');box.innerHTML='';const card=cardEl(c,rev,{flipped:true});card.style.setProperty('--cw','128px');card.style.cursor='default';box.appendChild(card);
   const info=document.createElement('div');info.id='dailyInfo';
-  const u=P().ui,nameHtml=isLatin()?cardName(c):`${cardName(c)} <span style="font-family:var(--f-roman);font-size:13px;color:var(--gold)">${c.en}</span>`;
-  info.innerHTML=`<div class="dd">${localDate()}</div><div class="dn">${nameHtml} <span style="font-size:13px;color:${rev?'#f2a4b0':'#bfe3ae'}">· ${oriText(rev)}</span></div><div class="dk">✦ ${u.dailyToday} ${kws.join(' · ')}</div><div class="dm">${cardMeaning(c,rev)}</div><div id="dailyYi"><span class="yi">${u.dailyLean} · ${kws[0]}</span>${kws[1]?`<span class="yi">${u.dailyNotice} · ${kws[1]}</span>`:''}<span class="ji">${u.dailyAvoid} · ${cardKeywords(c,!rev).split('·')[0].trim()}</span></div>`;
+  info.innerHTML=isZH()?`<div class="dd">${localDate()}</div><div class="dn">${c.cn} <span style="font-family:var(--f-roman);font-size:13px;color:var(--gold)">${c.en}</span> <span style="font-size:13px;color:${rev?'#f2a4b0':'#bfe3ae'}">· ${oriText(rev)}</span></div><div class="dk">✦ 今日关键词：${kws.join(' · ')}</div><div class="dm">${cardMeaning(c,rev)}</div><div id="dailyYi"><span class="yi">宜 · ${kws[0]}</span>${kws[1]?`<span class="yi">宜 · ${kws[1]}</span>`:''}<span class="ji">忌 · ${cardKeywords(c,!rev).split('·')[0].trim()}</span></div>`:
+  `<div class="dd">${localDate()}</div><div class="dn">${c.en} <span style="font-size:13px;color:${rev?'#f2a4b0':'#bfe3ae'}">· ${oriText(rev)}</span></div><div class="dk">✦ Today: ${kws.join(' · ')}</div><div class="dm">${cardMeaning(c,rev)}</div><div id="dailyYi"><span class="yi">Lean into · ${kws[0]}</span>${kws[1]?`<span class="yi">Notice · ${kws[1]}</span>`:''}<span class="ji">Avoid · ${cardKeywords(c,!rev).split('·')[0].trim()}</span></div>`;
   box.appendChild(info);renderJournal();openModal('mDaily');
 }
 
 /* ---- 塔罗档案 ---- */
-const ARC_TABS=['major','wands','cups','swords','pents'],ARC_TAB_KEY={major:'tabMajor',wands:'tabWands',cups:'tabCups',swords:'tabSwords',pents:'tabPents'};
+const ARC_TABS=[['major','Major Arcana','大阿尔卡那'],['wands','Wands','权杖'],['cups','Cups','圣杯'],['swords','Swords','宝剑'],['pents','Pentacles','星币']];
 let arcCur='major',arcQuery='',arcRev=false;
 function buildArchive(){
   const tabs=$('#arcTabs'); tabs.innerHTML='';
-  const u=P().ui;
-  ARC_TABS.forEach(k=>{
-    const t=document.createElement('button');t.type='button';t.className='arcTab'+(k===arcCur?' cur':'');t.textContent=u[ARC_TAB_KEY[k]];t.dataset.tab=k;t.setAttribute('aria-pressed',String(k===arcCur));
+  ARC_TABS.forEach(([k,en,zh])=>{
+    const t=document.createElement('button');t.type='button';t.className='arcTab'+(k===arcCur?' cur':'');t.textContent=isZH()?zh:en;t.dataset.tab=k;t.setAttribute('aria-pressed',String(k===arcCur));
     tabs.appendChild(t);
   });
-  const ori=$('#arcOrientation');if(ori){ori.textContent=arcRev?u.reversed:u.upright;ori.setAttribute('aria-pressed',String(arcRev));}
+  const ori=$('#arcOrientation');if(ori){ori.textContent=arcRev?(isZH()?'逆位':'Reversed'):(isZH()?'正位':'Upright');ori.setAttribute('aria-pressed',String(arcRev));}
   const grid=$('#arcGrid'); grid.innerHTML=''; grid.style.display='';
   $('#arcDetail').classList.remove('show'); $('#arcBack').style.display='none';
   const q=arcQuery.trim().toLowerCase();
@@ -2510,15 +1970,14 @@ function buildArchive(){
     const el=cardEl(c,arcRev,{tag:false,flipped:true}); el.dataset.cid=c.id;el.setAttribute('role','button');el.setAttribute('tabindex','0');el.setAttribute('aria-label',`${c.en}, ${arcRev?'Reversed':'Upright'}`);
     grid.appendChild(el);
   });
-  if(!cards.length)grid.innerHTML=`<div id="arcEmpty">${P().ui.arcEmpty}</div>`;
+  if(!cards.length)grid.innerHTML=`<div id="arcEmpty">${isZH()?'没有找到匹配的塔罗牌。':'No matching tarot cards found.'}</div>`;
 }
 function openArcDetail(cid){
   const c=DECK.find(x=>x.id===cid);if(!c)return;$('#arcGrid').style.display='none';$('#arcBack').style.display='block';const d=$('#arcDetail');d.classList.add('show');d.innerHTML='';
   const card=cardEl(c,arcRev,{tag:false,flipped:true});card.style.setProperty('--cw','138px');card.style.cursor='default';d.appendChild(card);const info=document.createElement('div');info.id='adInfo';
-  const first=arcRev?'r':'u',u=P().ui;
-  const corSub=c.arcana==='major'?fmt(P().detail.corMajor,{roman:c.roman}):fmt(P().detail.corMinor,{suit:P().suits[c.arcana].name,element:P().suits[c.arcana].element});
-  const nameHtml=isLatin()?cardName(c):`${cardName(c)}<i>${c.en} · ${corSub}</i>`;
-  info.innerHTML=`<h4>${nameHtml}</h4><div class="sec ${first==='u'?'active':''}"><div class="t u">▲ ${u.upright} · ${cardKeywords(c,false).split('·').map(x=>x.trim()).join(' · ')}</div><p>${cardMeaning(c,false)}</p></div><div class="sec ${first==='r'?'active':''}"><div class="t r">▼ ${u.reversed} · ${cardKeywords(c,true).split('·').map(x=>x.trim()).join(' · ')}</div><p>${cardMeaning(c,true)}</p></div>`;d.appendChild(info);
+  const first=arcRev?'r':'u';
+  info.innerHTML=isZH()?`<h4>${c.cn}<i>${c.en}${c.arcana==='major'?' · '+c.roman:' · '+SUITS[c.arcana].el+'元素'}</i></h4><div class="sec ${first==='u'?'active':''}"><div class="t u">▲ 正位 · ${c.kw.split('·').join(' · ')}</div><p>${c.up}</p></div><div class="sec ${first==='r'?'active':''}"><div class="t r">▼ 逆位 · ${c.kwr.split('·').join(' · ')}</div><p>${c.rev}</p></div>`:
+  `<h4>${c.en}<i>${c.arcana==='major'?`Major Arcana · ${c.roman}`:`${EN_SUIT[c.arcana].name} · ${EN_SUIT[c.arcana].element}`}</i></h4><div class="sec ${first==='u'?'active':''}"><div class="t u">▲ Upright · ${cardKeywords(c,false).split('·').map(x=>x.trim()).join(' · ')}</div><p>${cardMeaning(c,false)}</p></div><div class="sec ${first==='r'?'active':''}"><div class="t r">▼ Reversed · ${cardKeywords(c,true).split('·').map(x=>x.trim()).join(' · ')}</div><p>${cardMeaning(c,true)}</p></div>`;d.appendChild(info);
 }
 
 /* ---- 弹层 ---- */
@@ -2544,9 +2003,8 @@ function buildDirs(){
 /* ═══════════════════ 事件路由 ═══════════════════ */
 document.addEventListener('click',e=>{
   const T=e.target;
-  if(T.closest('#langBtn')){toggleLangPanel();return;}
-  if(T.closest('#langPanel button')){closeLangPanel();switchLang(T.closest('#langPanel button').dataset.lang);return;}
-  if(!T.closest('#langSwitch'))closeLangPanel();
+  const langBtn=T.closest('#langSwitch button');
+  if(langBtn){state.lang=langBtn.dataset.lang;savePreferredLang(state.lang);applyLanguage();return;}
   /* 弹层 */
   if(T.closest('[data-close]')){closeModals();return;}
   const modal=T.closest('.modal');
@@ -2563,7 +2021,7 @@ document.addEventListener('click',e=>{
     const k=nav.dataset.nav;
     if(k==='home'){ if(state.stage!=='home')backHome(); return; }
     if(k==='start'){ toIntro(); return; }
-    if(k==='spreads'){ $$('.sp-card').forEach(c=>{c.classList.remove('pulse');void c.offsetWidth;c.classList.add('pulse');}); toast(P().ui.chooseSpreadToast); return; }
+    if(k==='spreads'){ $$('.sp-card').forEach(c=>{c.classList.remove('pulse');void c.offsetWidth;c.classList.add('pulse');}); toast(isZH()?'点击卡片选择牌阵 ✦':'Choose a spread card ✦'); return; }
     if(k==='daily'){ openDaily(); return; }
     if(k==='archive'){ openModal('mArchive'); return; }
     if(k==='about'){ openModal('mAbout'); return; }
@@ -2572,8 +2030,8 @@ document.addEventListener('click',e=>{
   /* 首页交互 */
   if(state.stage==='home'){
     const sc=T.closest('.sp-card');
-    if(sc){ state.spread=sc.dataset.spread; $$('.sp-card').forEach(c=>c.classList.toggle('sel',c===sc)); sfx.soft();
-      toast(fmt(P().ui.selectedToast,{name:spreadName(state.spread),n:SPREADS[state.spread].n})); return; }
+    if(sc){ state.spread=sc.dataset.spread; $$('.sp-card').forEach(c=>c.classList.toggle('sel',c===sc)); sfx.select();
+      toast(isZH()?`已选「${spreadName(state.spread)}」· ${SPREADS[state.spread].n} 张`:`Selected: ${spreadName(state.spread)} · ${SPREADS[state.spread].n} cards`); return; }
     const dc=T.closest('.deco-c');
     if(dc){ state.spread='three'; $$('.sp-card').forEach(c=>c.classList.toggle('sel',c.dataset.spread==='three')); toIntro(); return; }
     if(!T.closest('[data-ui]')){ toIntro(); return; }
@@ -2585,7 +2043,7 @@ document.addEventListener('click',e=>{
 
   if(state.stage==='intro'){
     const chip=T.closest('.dir-chip');
-    if(chip){ state.dir=chip.dataset.dir; $$('.dir-chip').forEach(c=>c.classList.toggle('sel',c===chip)); sfx.soft(); return; }
+    if(chip){ state.dir=chip.dataset.dir; $$('.dir-chip').forEach(c=>c.classList.toggle('sel',c===chip)); sfx.focus(); return; }
     if(!T.closest('[data-ui]')){ toDraw(); }
     return;
   }
@@ -2610,7 +2068,6 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
-    if($('#langSwitch')?.classList.contains('open')){closeLangPanel();return;}
     if($$('.modal.show').length){closeModals();return;}
     if(state.stage==='intro'||state.stage==='draw')backHome();
     else if(state.stage==='burst')finishBurst();
@@ -2686,29 +2143,12 @@ $('#arcSearch')?.addEventListener('input',e=>{arcQuery=e.target.value;buildArchi
 
 /* ═══════════════════ 初始化 ═══════════════════ */
 (function init(){
-  const boot=()=>{buildDirs();applyLanguage();updateSoundButton();enhanceA11y();};
-  if(PACKS[state.lang])boot();
-  else ensurePack(state.lang).then(boot).catch(()=>{state.lang='en';boot();});
+  buildDirs(); applyLanguage(); enhanceA11y();
   state.question=$('#questionInput')?.value.trim()||'';
   $$('.modal').forEach(m=>m.setAttribute('aria-hidden',m.classList.contains('show')?'false':'true'));
   const decoKinds=['sun','star','moon'];
   $$('#decoRow .deco-c .cb').forEach((el,i)=>el.innerHTML=decoSVG(decoKinds[i]||'star'));
-
-  /* Mobile browsers can hand MP4 playback to the native media UI.
-     Do not attach video sources on mobile; keep the ritual fully in-page. */
-  if(MOBILE_VIDEO_DISABLED){
-    document.documentElement.classList.add('mobile-no-video');
-    Object.values(V).forEach(v=>{
-      v.removeAttribute('src');
-      v.preload='none';
-      v.classList.remove('on','dip');
-    });
-  }else{
-    Object.values(V).forEach(v=>{
-      if(!v.getAttribute('src')&&v.dataset.src)v.src=v.dataset.src;
-      v.preload='none';
-    });
-  }
+  V.v1.preload='none'; /* 首屏不预载视频，进入占卜时再加载 */
 })();
 </script>
 </body>
