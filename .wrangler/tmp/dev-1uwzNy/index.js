@@ -3,6 +3,89 @@ var __name = (target, value) => __defProp(target, "name", { value, configurable:
 
 // src/index.js
 var API_ORIGIN = "https://api.arcunara.com";
+var SITE_ORIGIN = "https://arcunara.com";
+var LANG_ROUTES = {
+  zh: { htmlLang: "zh-CN", og: "zh_CN" },
+  ja: { htmlLang: "ja", og: "ja_JP" },
+  ko: { htmlLang: "ko", og: "ko_KR" },
+  es: { htmlLang: "es", og: "es_ES" },
+  fr: { htmlLang: "fr", og: "fr_FR" },
+  de: { htmlLang: "de", og: "de_DE" },
+  pt: { htmlLang: "pt", og: "pt_BR" },
+  ru: { htmlLang: "ru", og: "ru_RU" }
+};
+var metaCache = {};
+function normLangCode(v) {
+  if (!v) return null;
+  v = String(v).toLowerCase();
+  if (v.startsWith("zh")) return "zh";
+  const base = v.split("-")[0];
+  return base === "en" || LANG_ROUTES[base] ? base : null;
+}
+__name(normLangCode, "normLangCode");
+function unescapeJs(s) {
+  return s.replace(/\\(['"\\])/g, "$1");
+}
+__name(unescapeJs, "unescapeJs");
+var STR_VAL = String.raw`(?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)")`;
+var META_RE = new RegExp(
+  `meta:\\{[\\s\\S]*?title:${STR_VAL}[\\s\\S]*?desc:${STR_VAL}[\\s\\S]*?ogDesc:${STR_VAL}[\\s\\S]*?twDesc:${STR_VAL}`,
+  "g"
+);
+function extractMetaAll(src) {
+  const out = [];
+  let m;
+  META_RE.lastIndex = 0;
+  while (m = META_RE.exec(src)) {
+    const v = /* @__PURE__ */ __name((a, b) => unescapeJs(a !== void 0 ? a : b), "v");
+    out.push({
+      title: v(m[1], m[2]),
+      desc: v(m[3], m[4]),
+      ogDesc: v(m[5], m[6]),
+      twDesc: v(m[7], m[8])
+    });
+  }
+  return out;
+}
+__name(extractMetaAll, "extractMetaAll");
+async function getMeta(env, lang, html) {
+  if (metaCache[lang]) return metaCache[lang];
+  try {
+    let metas;
+    if (lang === "zh") {
+      metas = extractMetaAll(html);
+    } else {
+      const res = await env.ASSETS.fetch(new URL(`/i18n/${lang}.js`, "https://assets.local"));
+      if (!res.ok) return null;
+      metas = extractMetaAll(await res.text());
+    }
+    if (!metas.length) return null;
+    const meta = metas[metas.length - 1];
+    metaCache[lang] = meta;
+    return meta;
+  } catch (error) {
+    return null;
+  }
+}
+__name(getMeta, "getMeta");
+function escapeHtml(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+__name(escapeHtml, "escapeHtml");
+function injectLang(html, cfg, meta, canonicalUrl) {
+  let out = html.replace('<html lang="en">', `<html lang="${cfg.htmlLang}">`);
+  if (meta) {
+    const t = escapeHtml(meta.title);
+    const d = escapeHtml(meta.desc);
+    const og = escapeHtml(meta.ogDesc);
+    const tw = escapeHtml(meta.twDesc);
+    out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${t}</title>`).replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${d}">`).replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${t}">`).replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${og}">`).replace(/<meta property="og:locale" content="[^"]*">/, `<meta property="og:locale" content="${cfg.og}">`).replace(/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${t}">`).replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${tw}">`);
+  }
+  out = out.replace("</title>", `</title>
+<link rel="canonical" href="${canonicalUrl}">`);
+  return out;
+}
+__name(injectLang, "injectLang");
 var src_default = {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -115,6 +198,29 @@ var src_default = {
           }
         }
       );
+    }
+    if (url.pathname === "/") {
+      const q = normLangCode(url.searchParams.get("lang"));
+      if (q) {
+        return Response.redirect(url.origin + (q === "en" ? "/" : `/${q}/`), 301);
+      }
+    }
+    const pathLang = url.pathname.match(/^\/(zh|ja|ko|es|fr|de|pt|ru)\/?$/i);
+    if (pathLang) {
+      const lang = pathLang[1].toLowerCase();
+      const assetRes = await env.ASSETS.fetch(new URL("/", url));
+      if (!assetRes.ok) return assetRes;
+      const rawHtml = await assetRes.text();
+      const cfg = LANG_ROUTES[lang];
+      const meta = await getMeta(env, lang, rawHtml);
+      const html = injectLang(rawHtml, cfg, meta, `${SITE_ORIGIN}/${lang}/`);
+      return new Response(html, {
+        status: 200,
+        headers: {
+          "Content-Type": "text/html; charset=utf-8",
+          "Cache-Control": "public, max-age=300"
+        }
+      });
     }
     return env.ASSETS.fetch(request);
   }

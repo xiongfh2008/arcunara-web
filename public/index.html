@@ -17,16 +17,16 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="arcunara · Interactive Tarot Reading">
 <meta name="twitter:description" content="A tarot ritual for reflection, clarity, and choice.">
-<link rel="alternate" hreflang="en" href="?lang=en">
-<link rel="alternate" hreflang="zh-CN" href="?lang=zh-CN">
-<link rel="alternate" hreflang="ja" href="?lang=ja">
-<link rel="alternate" hreflang="ko" href="?lang=ko">
-<link rel="alternate" hreflang="es" href="?lang=es">
-<link rel="alternate" hreflang="fr" href="?lang=fr">
-<link rel="alternate" hreflang="de" href="?lang=de">
-<link rel="alternate" hreflang="pt" href="?lang=pt">
-<link rel="alternate" hreflang="ru" href="?lang=ru">
-<link rel="alternate" hreflang="x-default" href="?lang=en">
+<link rel="alternate" hreflang="en" href="https://arcunara.com/">
+<link rel="alternate" hreflang="zh-CN" href="https://arcunara.com/zh/">
+<link rel="alternate" hreflang="ja" href="https://arcunara.com/ja/">
+<link rel="alternate" hreflang="ko" href="https://arcunara.com/ko/">
+<link rel="alternate" hreflang="es" href="https://arcunara.com/es/">
+<link rel="alternate" hreflang="fr" href="https://arcunara.com/fr/">
+<link rel="alternate" hreflang="de" href="https://arcunara.com/de/">
+<link rel="alternate" hreflang="pt" href="https://arcunara.com/pt/">
+<link rel="alternate" hreflang="ru" href="https://arcunara.com/ru/">
+<link rel="alternate" hreflang="x-default" href="https://arcunara.com/">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"arcunara","applicationCategory":"LifestyleApplication","inLanguage":["en","zh-CN","ja","ko","es","fr","de","pt","ru"],"description":"Interactive 78-card tarot readings for reflection, clarity, and intentional choice."}
 </script>
@@ -341,7 +341,7 @@ body[data-stage="burst"] #skipBtn{opacity:.75;pointer-events:auto}
 /* ============ 解读页 ============ */
 #readingLayer{z-index:20;overflow-y:auto;overflow-x:hidden;background:
   linear-gradient(180deg,rgba(7,4,15,.86) 0%,rgba(7,4,15,.94) 40%,rgba(7,4,15,.98) 100%),
-  url('assets/img/bg-reading.jpg') center top/cover no-repeat fixed}
+  url('/assets/img/bg-reading.jpg') center top/cover no-repeat fixed}
 #rdInner{max-width:1020px;margin:0 auto;padding:66px 26px 90px;display:flex;flex-direction:column;align-items:center;gap:34px}
 #rdHead{text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px}
 #rdHead h2{font-family:var(--f-disp);font-size:clamp(30px,3.4vw,42px);letter-spacing:8px;color:var(--gold-hi);
@@ -1082,11 +1082,11 @@ html:is([lang="en"],[lang="es"],[lang="fr"],[lang="de"],[lang="pt"],[lang="ru"])
 <div id="bgHome"></div>
 <div id="vwrap">
   <!-- v1: 点击进入后的等待/凝神画面 -->
-  <video id="v1" muted playsinline webkit-playsinline preload="none" poster="assets/img/poster-open.jpg" data-src="assets/video/opening.mp4" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"></video>
+  <video id="v1" muted playsinline webkit-playsinline preload="none" poster="/assets/img/poster-open.jpg" data-src="/assets/video/opening.mp4" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"></video>
   <!-- v2: 发牌与抽牌池过程 -->
-  <video id="v2" muted playsinline webkit-playsinline preload="none" poster="assets/img/poster-rise.jpg" data-src="assets/video/rise.mp4" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"></video>
+  <video id="v2" muted playsinline webkit-playsinline preload="none" poster="/assets/img/poster-rise.jpg" data-src="/assets/video/rise.mp4" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"></video>
   <!-- v3: 抽牌完成后的揭示动画 -->
-  <video id="v3" muted playsinline webkit-playsinline preload="none" data-src="assets/video/burst.mp4" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"></video>
+  <video id="v3" muted playsinline webkit-playsinline preload="none" data-src="/assets/video/burst.mp4" disablepictureinpicture disableremoteplayback controlslist="nodownload nofullscreen noremoteplayback" tabindex="-1" aria-hidden="true"></video>
 </div>
 <div id="veil"></div>
 <div id="flash"></div>
@@ -1762,7 +1762,7 @@ function ensurePack(lang){
   if(PACKS[lang])return Promise.resolve();
   return new Promise((res,rej)=>{
     const s=document.createElement('script');
-    s.src='i18n/'+lang+'.js';
+    s.src='/i18n/'+lang+'.js';
     s.onload=()=>{PACKS[lang]=window.I18N&&window.I18N[lang];PACKS[lang]?res():rej(new Error('bad pack'));};
     s.onerror=()=>rej(new Error('load fail'));
     document.head.appendChild(s);
@@ -2011,8 +2011,14 @@ function normLang(v){
   const base=v.split('-')[0];
   return LANG_CODES.includes(base)?base:null;
 }
+function langFromPath(){
+  const m=location.pathname.match(/^\/(en|zh|ja|ko|es|fr|de|pt|ru)(\/|$)/i);
+  return m?normLang(m[1]):null;
+}
 function preferredLang(){
   try{
+    const p=langFromPath();
+    if(p)return p;
     const q=normLang(new URLSearchParams(location.search).get('lang'));
     if(q)return q;
     const saved=normLang(localStorage.getItem('xy_lang'));
@@ -2021,17 +2027,12 @@ function preferredLang(){
   }catch(e){return 'en';}
 }
 function savePreferredLang(lang){
-  try{
-    localStorage.setItem('xy_lang',lang);
-    const u=new URL(location.href);u.searchParams.set('lang',lang==='zh'?'zh-CN':lang);
-    history.replaceState(null,'',u);
-  }catch(e){}
+  try{localStorage.setItem('xy_lang',lang);}catch(e){}
 }
 function switchLang(lang){
   if(!LANG_CODES.includes(lang)||lang===state.lang)return;
-  ensurePack(lang).then(()=>{
-    state.lang=lang;savePreferredLang(lang);applyLanguage();
-  }).catch(()=>{});
+  savePreferredLang(lang);
+  location.assign(lang==='en'?'/':`/${lang}/`);
 }
 function toggleLangPanel(){
   const ls=$('#langSwitch');if(!ls)return;
@@ -2695,7 +2696,10 @@ $('#arcSearch')?.addEventListener('input',e=>{arcQuery=e.target.value;buildArchi
 
 /* ═══════════════════ 初始化 ═══════════════════ */
 (function init(){
-  const boot=()=>{buildDirs();applyLanguage();updateSoundButton();enhanceA11y();};
+  const boot=()=>{
+    buildDirs();applyLanguage();updateSoundButton();enhanceA11y();
+    try{ if(!langFromPath()&&state.lang!=='en')history.replaceState(null,'',`/${state.lang}/`); }catch(e){}
+  };
   if(PACKS[state.lang])boot();
   else ensurePack(state.lang).then(boot).catch(()=>{state.lang='en';boot();});
   state.question=$('#questionInput')?.value.trim()||'';
